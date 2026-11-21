@@ -1,0 +1,16 @@
+{
+  "note": "Clip machine queue. approved=true reels get posted at the next slot (09:00/13:00/18:00/21:00 IST). posted=true after Instagram publish.",
+  "reels": [
+    {
+      "id": "2026-11-22_boxabl_elon_guesthouse",
+      "file": "clips/2026-11-22_boxabl_elon_guesthouse.mp4",
+      "url": "https://raw.githubusercontent.com/MDZohaibParwez/Reels/main/clips/2026-11-22_boxabl_elon_guesthouse.mp4",
+      "campaign": "BOXABL (Clip Farm) - https://contentrewards.com/c/campaigns/188c3e39-7850-4896-94df-e7a5be0cfec3",
+      "caption": "Elon Musk keeps a BOXABL Casita as his guest house in South Texas. A whole foldable home, built in a factory and unfolded on site. Would you stay in one?\n\n@boxabl #boxabl #casita #tinyhome #elonmusk #foldablehome",
+      "approved": true,
+      "posted": false,
+      "post_url": "",
+      "submitted": false
+    }
+  ]
+}
