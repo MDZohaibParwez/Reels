@@ -1,0 +1,10 @@
+{"size":[1080,1080],"pieces":[
+ {"a":"/home/claude/src/elon.mp4","s":9.12,"e":10.9,"crop":"488:488:330:0"},
+ {"a":"/home/claude/src/elon.mp4","s":10.9,"e":13.3,"v":"/home/claude/src/enes8.mp4","vs":33.0},
+ {"a":"/home/claude/src/elon.mp4","s":61.1,"e":63.3,"v":"/home/claude/src/enes8.mp4","vs":21.0},
+ {"a":"/home/claude/src/elon.mp4","s":63.3,"e":65.2,"crop":"488:488:330:0"},
+ {"a":"/home/claude/src/elon.mp4","s":65.2,"e":68.9,"v":"/home/claude/src/enes8.mp4","vs":36.5},
+ {"a":"/home/claude/src/elon.mp4","s":130.85,"e":133.6,"crop":"488:488:330:0"},
+ {"a":"/home/claude/src/elon.mp4","s":139.8,"e":142.3,"v":"/home/claude/src/enes8.mp4","vs":42.0},
+ {"a":"/home/claude/src/elon.mp4","s":142.3,"e":144.75,"v":"/home/claude/src/enes8.mp4","vs":45.0}
+]}
