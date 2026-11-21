@@ -10,8 +10,13 @@
       "approved": true,
       "posted": true,
       "post_url": "https://www.instagram.com/reel/DgBLW9mjhpm/",
-      "submitted": false,
-      "posted_at": "2026-11-21T21:18:45Z"
+      "submitted": true,
+      "posted_at": "2026-11-21T21:18:45Z",
+      "submitted_platforms": [
+        "instagram"
+      ]
     }
-  ]
+  ],
+  "auto_submit": true,
+  "auto_submit_note": "Set on 2026-11-22 because Zohaib explicitly said in chat: \"haa reels tum khud hi submit karo\" (submit reels yourself)."
 }
