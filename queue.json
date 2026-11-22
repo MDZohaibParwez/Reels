@@ -76,9 +76,13 @@
       "approved": true,
       "posted": true,
       "post_url": "https://www.instagram.com/reel/DgDHlohD4xi/",
-      "submitted": false,
+      "submitted": true,
       "fb_post_url": "https://www.facebook.com/1373322172540123/videos/1874562873992094",
-      "posted_at": "2026-11-22T15:25:30Z"
+      "posted_at": "2026-11-22T15:25:30Z",
+      "submitted_platforms": [
+        "instagram"
+      ],
+      "submitted_at": "2026-11-22T15:29:00Z"
     }
   ],
   "auto_submit": true,
