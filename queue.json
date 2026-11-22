@@ -42,9 +42,13 @@
       "approved": true,
       "posted": true,
       "post_url": "https://www.instagram.com/reel/DgCQt9fEmvA/",
-      "submitted": false,
+      "submitted": true,
       "fb_post_url": "https://www.facebook.com/1373322172540123/videos/1457120609168092",
-      "posted_at": "2026-11-22T07:25:14Z"
+      "posted_at": "2026-11-22T07:25:14Z",
+      "submitted_platforms": [
+        "instagram"
+      ],
+      "submitted_at": "2026-11-22T07:28:30Z"
     },
     {
       "id": "2026-11-22_boxabl_elon_assembly_line",
