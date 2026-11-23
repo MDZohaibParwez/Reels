@@ -147,11 +147,15 @@
       "slot": "2026-11-23 21:00 IST",
       "approved": true,
       "posted": true,
-      "submitted": false,
+      "submitted": true,
       "post_url": "https://www.instagram.com/reel/DgFsjfXDsj-/",
       "ig_media_id": "17998944176843702",
       "fb_post_url": "https://www.facebook.com/1373322172540123/videos/2122383918420331",
-      "posted_at": "2026-11-23T15:26:37Z"
+      "posted_at": "2026-11-23T15:26:37Z",
+      "submitted_platforms": [
+        "instagram"
+      ],
+      "submitted_at": "2026-11-23T15:32:00Z"
     },
     {
       "id": "2026-11-23_timwhite_brad_pitt",
