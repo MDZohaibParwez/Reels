@@ -140,8 +140,10 @@
    "submitted": false,
    "hold": true,
    "requires_draft_approval": true,
-   "note": "Campaign rule: drafts need Content Rewards pre-approval before posting; IG bio must link https://storyteller.media/products/life-through-my-lens. Owner approved 2026-11-23. Keep approved=false (so poster skips it) until CR draft is approved and bio link is set; then flip approved=true, hold=false.",
-   "owner_approved": true
+   "note": "Campaign rule: drafts need Content Rewards pre-approval before posting; IG bio must link https://storyteller.media/products/life-through-my-lens. Owner approved 2026-11-23. Keep approved=false (so poster skips it) until CR draft is approved and bio link is set; then flip approved=true, hold=false. Draft submitted to CR (IG mictalkclips) and pending brand review - check https://contentrewards.com/c/drafts.",
+   "owner_approved": true,
+   "draft_status": "pending",
+   "draft_submitted_at": "2026-11-23T02:05:00Z"
   }
  ],
  "auto_submit": true,
