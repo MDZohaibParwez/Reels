@@ -111,10 +111,14 @@
       "slot": "2026-11-23 13:00 IST",
       "approved": true,
       "posted": true,
-      "submitted": false,
+      "submitted": true,
       "post_url": "https://www.instagram.com/reel/DgE1mV7Cbgx/",
       "fb_post_url": "https://www.facebook.com/1373322172540123/videos/1139698221800365",
-      "posted_at": "2026-11-23T07:26:19Z"
+      "posted_at": "2026-11-23T07:26:19Z",
+      "submitted_platforms": [
+        "instagram"
+      ],
+      "submitted_at": "2026-11-23T07:29:01Z"
     },
     {
       "id": "2026-11-23_boxabl_airrack_night",
