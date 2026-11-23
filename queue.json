@@ -91,7 +91,7 @@
    "campaign": "BOXABL (Clip Farm) - https://contentrewards.com/c/campaigns/188c3e39-7850-4896-94df-e7a5be0cfec3",
    "caption": "They stacked 6 cars on a BOXABL Casita, then dropped a car on it from 50 feet. This foldable home is built different. Would you live in one?\n\n@boxabl #boxabl #casita #foldablehome #tinyhome #fazerug",
    "slot": "2026-11-23 09:00 IST",
-   "approved": false,
+   "approved": true,
    "posted": false,
    "submitted": false
   },
@@ -102,7 +102,7 @@
    "campaign": "BOXABL (Clip Farm) - https://contentrewards.com/c/campaigns/188c3e39-7850-4896-94df-e7a5be0cfec3",
    "caption": "The first BOXABL Casita went to Elon Musk, and the team was under an NDA. Now it sits at Starbase in Texas, and BOXABL keeps growing with a huge waitlist and a new two-story prototype. Would you get one?\n\n@boxabl #boxabl #elonmusk #casita #foldablehome #tinyhome",
    "slot": "2026-11-23 13:00 IST",
-   "approved": false,
+   "approved": true,
    "posted": false,
    "submitted": false
   },
@@ -113,7 +113,7 @@
    "campaign": "BOXABL (Clip Farm) - https://contentrewards.com/c/campaigns/188c3e39-7850-4896-94df-e7a5be0cfec3",
    "caption": "Airrack spent a night in a BOXABL Casita, a foldable home that looks small outside but feels cozy inside. Is less really more?\n\n@boxabl #boxabl #airrack #casita #tinyhome #foldablehome",
    "slot": "2026-11-23 18:00 IST",
-   "approved": false,
+   "approved": true,
    "posted": false,
    "submitted": false
   },
@@ -124,7 +124,7 @@
    "campaign": "BOXABL (Clip Farm) - https://contentrewards.com/c/campaigns/188c3e39-7850-4896-94df-e7a5be0cfec3",
    "caption": "Rick Caruso on BOXABL: homes built on a factory production line outside Las Vegas, and a plan for 30,000 units to get people into homes. Could foldable homes change housing?\n\n@boxabl #boxabl #joerogan #casita #foldablehome #modularhome",
    "slot": "2026-11-23 21:00 IST",
-   "approved": false,
+   "approved": true,
    "posted": false,
    "submitted": false
   },
@@ -135,12 +135,12 @@
    "campaign": "Timothy White on The Drew Barrymore Show (Storyteller Publishing) - https://contentrewards.com/c/campaigns/015ebba0-2f0c-4359-b229-75f9c9591b68",
    "caption": "Brad Pitt called photographer Timothy White and said \"I've got five days\", so they rode motorcycles through the Mojave Desert for a 5-day shoot. More stories behind iconic photos in his book Life Through My Lens. Get your copy from the link in bio.\n\n@storytellerpublishing @storytelleraspire #LifeThroughMyLens #bookstagram #booktok #memoir #photography",
    "slot": "HOLD - only after CR draft pre-approval + bio link",
-   "approved": false,
+   "approved": true,
    "posted": false,
    "submitted": false,
    "hold": true,
    "requires_draft_approval": true,
-   "note": "Campaign rule: drafts need Content Rewards pre-approval before posting; IG bio must link https://storyteller.media/products/life-through-my-lens. Do NOT post until hold=false."
+   "note": "Campaign rule: drafts need Content Rewards pre-approval before posting; IG bio must link https://storyteller.media/products/life-through-my-lens. Do NOT post until hold=false. Owner approved 2026-11-23; draft to be submitted for CR pre-approval first."
   }
  ],
  "auto_submit": true,
