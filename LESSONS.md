@@ -16,27 +16,32 @@ every repeat of a mistake must get a STRONGER fix than the last one (code/check 
 4. **Caption:** first line ≤ 125 chars and = the hook (it's all that shows before "more"); details on line 2;
    end with a SPECIFIC low-friction question, different from the last 6 captions (not "Would you live in one?" again).
    e.g. "$50K for this — worth it or no?", "Elon's guest house or your apartment?". 3-5 niche hashtags + campaign tags.
-5. **Gate:** run `python3 tools/precheck.py clips/<file>.mp4 --caption "<caption>"` on every render. Any FAIL → fix
+5. **Gate:** run `python3 tools/precheck.py clips/<file>.mp4 --caption "<caption>" --hook "<--top text>"` on every render
+   (it now FAILS bad hooks: > 8 words, no [keyword], question/"How/What/Why" openers, "X on Y" / "is more than" labels). Any FAIL → fix
    and re-render before it goes into queue.json. Then look at frames 0s / 1s / 3s / last yourself.
 6. Change ONE big variable per batch and log it below with the baseline, so we learn what works.
 
-## METRICS (Content Rewards views, read 2026-11-24 ~23:10 IST; all 15 submissions "Pending", 0 approved)
-Baseline pre-v3 (12 Boxabl reels, 21-24 Nov): median **130**, avg 116, range 46-160. Account: 1 follower, empty bio.
-| reel | views | type |
-|---|---|---|
-| elon_guesthouse | 160 | celeb |
-| elon_assembly_line | 156 | celeb |
-| postmalone_kitchen | 153 | celeb |
-| elon_all_three | 144 | celeb |
-| elon_nda | 136 | celeb |
-| airrack_night | 130 | celeb |
-| foam_walls | 130 | product |
-| hours_not_months | 119 | product |
-| car_drop | 118 | spectacle |
-| weight_trailer | 53 | product |
-| phase2_future | 52 | business |
-| caruso_30000 | 46 | business |
-| fifty_k_home | (new) | celeb |
+## METRICS (Content Rewards views, read 2026-11-25 01:25 IST; all 15 submissions "Pending", 0 approved, 0 rejected)
+Baseline pre-v3 (12 mature Boxabl reels, 21-24 Nov): median **130**, avg 117, range 46-160. Account: 1 follower, empty bio.
+Current rules (v3 layout + hook gate): **0 reels posted yet** (first batch = 2026-11-25) → no verdict.
+| reel | views | type | slot (IST) |
+|---|---|---|---|
+| elon_guesthouse | 160 | celeb | 02:48 |
+| elon_assembly_line | 156 | celeb | 18:00 |
+| postmalone_kitchen | 153 | celeb | 09:00 |
+| elon_all_three | 144 | celeb | 13:00 |
+| elon_nda | 136 | celeb | 13:00 |
+| airrack_night | 130 | celeb | 18:00 |
+| foam_walls | 130 | product | 18:00 |
+| hours_not_months | 119 | product | 13:00 |
+| car_drop | 118 | spectacle | 09:00 |
+| weight_trailer | 56 | product | 09:00 |
+| phase2_future | 52 | business | 21:00 |
+| caruso_30000 | 46 | business | 21:00 |
+| fifty_k_home | 9 (only 4.5h old) | celeb | 21:00 |
+By slot (Measured, mature reels): 18:00 avg 139 (n=3) · 13:00 avg 133 (n=3) · 09:00 avg 109 (n=3) · **21:00 avg 49 (n=2)**.
+Hypothesis (Low confidence): the 21:00 slot is weak — BUT both 21:00 reels were also business topics (confounded). fifty_k_home
+(celeb, 21:00) is the de-confounding test: if it stays < 60 at 48h, the slot is suspect; if it reaches ~130, topic was the cause.
 Every reel stalls at ~50-160 = Instagram's first test batch; nothing broke out. $0.50/1K + $1 min payout → need ~2,000 views per clip to earn anything.
 
 ## MISTAKE LOG
@@ -58,3 +63,21 @@ Every reel stalls at ~50-160 = Instagram's first test batch; nothing broke out. 
   > 200 (baseline 130) and at least one reel > 500. If not, next lever: hook wording A/B (same moment, 2 hooks).
 - Not available: IG insights (connection lacks instagram_manage_insights) → no retention/watch-time data. Content
   Rewards view counts are the only metric.
+
+### 2026-11-25 — daily self-review (01:25 IST). Audited best 48h = elon_all_three (144), worst mature = caruso_30000 (46), lowest = fifty_k_home (9, 4.5h old). Scores: 48 / 38 / 46 (all pre-v3).
+- Observed (frames): best = face on frame 0 (host in hard hat) → Elon's face by 3s; worst = static exterior on frame 0, no face, no
+  readable hook, 1s subtitle low-contrast on grass. fifty_k = FaZe Rug face on frame 0 but CTA "Would you live in a BOXABL?" again.
+  All three: hook headline tiny + 44% black screen → already fixed by v3 (M1/M2), not yet live.
+- **M6 High (repeat of M3, so stronger fix) — hook gate was only a written rule.** LESSONS said "precheck reminds" about bad hooks,
+  but precheck.py had NO hook check at all. → **FIX (code):** precheck.py now FAILS a hook that is > 8 words, has no single
+  [keyword], starts with How/What/Why/Is… or contains "?", or is a topic label ("Rick Caruso on…", "…is more than…", "This is…").
+  Reads the hook from `--hook` or queue.json "hook"; missing hook = FAIL. Tested: all 4 old bad hooks FAIL, the 3 good examples PASS.
+- **M7 Medium — question-reuse check was leaky.** It allowed `used <= 1` and counted the reel's own caption, so a question already
+  used once before still PASSED (fifty_k_home "Would you live in one?"). → **FIX (code):** own queue entry excluded, must be 0.
+- **M8 High (latent, caught before it happened) — v3 renders would fail the 30 MB gate.** Old reels already sat at the 10 Mbps
+  cap (26-29 MB at 21-23s); v3 adds a full blurred background + grain, so any reel > ~24s would be > 30 MB → precheck FAIL /
+  re-render loop in the 02:45 batch. → **FIX (code):** render2.py budgets bitrate from length (≤ ~27 MB). Test: 34.9s v3 render
+  = 26.5 MB PASS, 16.9s = 21.2 MB PASS; frames checked (hook visible frame 0, captions, end text OK).
+- Process: all 13 approved reels posted on slot and submitted within ~6 min. No render failures logged. No rejections.
+- **How we'll know:** next batch's queue entries all carry "hook" + precheck PASS; v3 experiment verdict when 8 v3 reels have
+  ≥ 48h of views (target median > 200 vs 130). Slot hypothesis: read fifty_k_home at 48h (see METRICS).

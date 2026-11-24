@@ -209,8 +209,11 @@ def main():
         if k == "whoosh": wi += 1
         else: ii += 1
     af.append("".join(mix) + f"amix=inputs={len(mix)}:duration=first:normalize=0,alimiter=limit=0.95[a]")
+    # 2026-11-25: v3 (full blurred bg + grain) hits the 10M cap -> 26-29 MB at ~22s, >30 MB past ~24s (precheck FAIL).
+    # Budget the video bitrate from the length so any 15-35s reel lands <= ~27 MB.
+    vkbps = int(min(10000, max(4000, 27e6 * 8 / total / 1000 - 250)))
     cmd = ["ffmpeg", "-v", "error", "-y"] + inputs + ["-filter_complex", vf + ";" + ";".join(af),
-           "-map", "[v]", "-map", "[a]", "-t", str(total), "-c:v", "libx264", "-preset", "veryfast", "-crf", "20", "-maxrate", "10M", "-bufsize", "20M",
+           "-map", "[v]", "-map", "[a]", "-t", str(total), "-c:v", "libx264", "-preset", "veryfast", "-crf", "20", "-maxrate", f"{vkbps}k", "-bufsize", f"{2*vkbps}k",
            "-c:a", "aac", "-b:a", "192k", "-ar", "44100", "-movflags", "+faststart", a.out]
     subprocess.run(cmd, check=True)
     print("ok", a.out, f"{total:.1f}s", f"sfx={len(sfx)}")

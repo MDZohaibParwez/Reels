@@ -6,7 +6,7 @@ python3 tools/precheck.py clips/<file>.mp4 [--caption "..."] [--queue queue.json
 Checks what a script can measure; prints PASS/FAIL per check and exits 1 if any FAIL.
 Things it cannot judge (is the hook interesting? is frame 0 the best visual?) still need eyes on frames.
 """
-import argparse, json, re, subprocess, sys
+import argparse, json, os, re, subprocess, sys
 
 
 def probe(f):
@@ -29,10 +29,35 @@ def luma(f, t):
     return float(m.group(1)) if m else None
 
 
+QWORDS = ("how", "what", "why", "who", "when", "where", "which", "is", "are", "do", "does", "can", "should")
+LABEL = [r"^[A-Z][\w.']+( [A-Z][\w.']+)* on ",          # "Rick Caruso on BOXABL homes"
+         r"\bis (more|not just|the future)\b", r"^this is\b", r"\bexplained\b", r"^the (story|truth) of\b"]
+
+
+def hook_checks(hook):
+    """RULE 1: <= 8 words, one [keyword], curiosity/stakes line - not a question or a topic label."""
+    plain = re.sub(r"[\[\]]", "", hook).strip()
+    words = plain.split()
+    first = words[0].lower().strip("\"'") if words else ""
+    yield "hook <= 8 words", 1 <= len(words) <= 8, f"{len(words)}: {plain!r}"
+    yield "hook has one [keyword]", len(re.findall(r"\[[^\]]+\]", hook)) == 1, hook
+    yield "hook is not a question/topic opener (How/What/Why...)", first not in QWORDS and "?" not in plain, plain
+    bad = [x for x in LABEL if re.search(x, plain, flags=re.I if not x.startswith("^[A-Z]") else 0)]
+    yield "hook is not a topic label", not bad, (bad[0] if bad else "")
+
+
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("file"); p.add_argument("--caption"); p.add_argument("--queue", default="queue.json")
+    p.add_argument("--hook", help="the --top hook text given to render2.py (default: queue.json entry's 'hook')")
     a = p.parse_args()
+    try:
+        reels = json.load(open(a.queue))["reels"]
+    except Exception:
+        reels = []
+    me = os.path.basename(a.file)
+    own = next((r for r in reels if os.path.basename(r.get("file", "")) == me), None)
+    others = [r for r in reels if r is not own]
     res = []
     def check(name, ok, info=""):
         res.append(ok); print(("PASS " if ok else "FAIL ") + name + (f"  ({info})" if info else ""))
@@ -63,13 +88,19 @@ def main():
             check("BOXABL: tags @boxabl", "@boxabl" in c.lower())
         q = [s for s in re.split(r"(?<=[.!?])\s+", c.split("\n\n")[0]) if s.endswith("?")]
         check("ends with a question (comment trigger)", bool(q))
-        try:
-            prev = [r.get("caption", "") for r in json.load(open(a.queue))["reels"]][-6:]
-            last_q = q[-1].strip().lower() if q else ""
-            reused = sum(1 for pc in prev if last_q and last_q in pc.lower())
-            check("question not reused in last 6 captions", reused <= 1, f"used {reused}x")
-        except Exception as e:
-            print("SKIP queue check:", e)
+        prev = [r.get("caption", "") for r in others][-6:]
+        last_q = q[-1].strip().lower() if q else ""
+        reused = sum(1 for pc in prev if last_q and last_q in pc.lower())
+        # 2026-11-25: was "<= 1" and counted the reel itself -> a question used once before still passed.
+        check("question not reused in last 6 captions", reused == 0, f"used {reused}x before")
+
+    # Hook gate (RULE 1). 2026-11-25: LESSONS said precheck checks hooks (M3) but it did not -> now it does.
+    hook = a.hook if a.hook is not None else (own or {}).get("hook")
+    if hook is None:
+        check("hook given (--hook or queue 'hook')", False, "missing")
+    else:
+        for name, ok, info in hook_checks(hook):
+            check(name, ok, info)
 
     print("RESULT:", "PASS" if all(res) else "FAIL")
     sys.exit(0 if all(res) else 1)
