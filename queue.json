@@ -288,6 +288,58 @@
       "views": 9,
       "status": "Pending",
       "views_checked_at": "2026-11-24T19:55:00Z"
+    },
+    {
+      "id": "2026-11-25_boxabl_faze_backyard",
+      "file": "clips/2026-11-25_boxabl_faze_backyard.mp4",
+      "url": "https://raw.githubusercontent.com/MDZohaibParwez/Reels/main/clips/2026-11-25_boxabl_faze_backyard.mp4",
+      "campaign": "BOXABL (Clip Farm) - https://contentrewards.com/c/campaigns/188c3e39-7850-4896-94df-e7a5be0cfec3",
+      "caption": "FaZe Rug walked into a furnished BOXABL Casita and now wants one for his backyard.\nHeated mirror, black and white shower, bed and TV, all inside a home that folds for shipping.\nBackyard BOXABL: guest room, studio or gaming setup?\n\n@boxabl #boxabl #fazerug #casita #tinyhome #backyardgoals",
+      "hook": "FaZe Rug wants [this] in his backyard",
+      "score": 70,
+      "slot": "2026-11-25 09:00 IST",
+      "approved": false,
+      "posted": false,
+      "submitted": false
+    },
+    {
+      "id": "2026-11-25_boxabl_fold_race",
+      "file": "clips/2026-11-25_boxabl_fold_race.mp4",
+      "url": "https://raw.githubusercontent.com/MDZohaibParwez/Reels/main/clips/2026-11-25_boxabl_fold_race.mp4",
+      "campaign": "BOXABL (Clip Farm) - https://contentrewards.com/c/campaigns/188c3e39-7850-4896-94df-e7a5be0cfec3",
+      "caption": "FaZe Rug timed the BOXABL crew folding a whole house: 23 minutes, start to finish.\nHe even jumped in to push a wall. Folded flat, it ships on a truck and unfolds on site.\nCould your crew beat 23 minutes?\n\n@boxabl #boxabl #fazerug #casita #foldablehome #prefabhomes",
+      "hook": "They folded a whole house in [23] minutes",
+      "score": 75,
+      "slot": "2026-11-25 13:00 IST",
+      "approved": false,
+      "posted": false,
+      "submitted": false
+    },
+    {
+      "id": "2026-11-25_boxabl_elon_spacex_delivery",
+      "file": "clips/2026-11-25_boxabl_elon_spacex_delivery.mp4",
+      "url": "https://raw.githubusercontent.com/MDZohaibParwez/Reels/main/clips/2026-11-25_boxabl_elon_spacex_delivery.mp4",
+      "campaign": "BOXABL (Clip Farm) - https://contentrewards.com/c/campaigns/188c3e39-7850-4896-94df-e7a5be0cfec3",
+      "caption": "Elon Musk swapped mansions for a tiny home in Texas. This BOXABL Casita was delivered to SpaceX.\nIt's 20x20 ft, arrives folded on a truck and unfolds on site with a crane. Kitchen, bedroom and bathroom inside.\nA mansion or a 20x20 BOXABL next to the rockets?\n\n@boxabl #boxabl #elonmusk #spacex #casita #tinyhome",
+      "hook": "Elon swapped mansions for [this] home",
+      "score": 73,
+      "slot": "2026-11-25 18:00 IST",
+      "approved": false,
+      "posted": false,
+      "submitted": false
+    },
+    {
+      "id": "2026-11-25_boxabl_house_per_minute",
+      "file": "clips/2026-11-25_boxabl_house_per_minute.mp4",
+      "url": "https://raw.githubusercontent.com/MDZohaibParwez/Reels/main/clips/2026-11-25_boxabl_house_per_minute.mp4",
+      "campaign": "BOXABL (Clip Farm) - https://contentrewards.com/c/campaigns/188c3e39-7850-4896-94df-e7a5be0cfec3",
+      "caption": "BOXABL wants to build homes like car factories build cars: one house every minute.\nFaZe Rug toured the factory in Las Vegas. Setting one up on site takes less than an hour.\nOne house a minute: possible or too crazy?\n\n@boxabl #boxabl #fazerug #casita #prefabhomes #foldablehome",
+      "hook": "They want to build a house [every] minute",
+      "score": 71,
+      "slot": "2026-11-25 21:00 IST",
+      "approved": false,
+      "posted": false,
+      "submitted": false
     }
   ],
   "auto_submit": true,
