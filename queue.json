@@ -239,8 +239,12 @@
       "caption": "\"Have you guys heard of a $50,000 home?\" FaZe Rug toured the BOXABL Casita in Las Vegas, the 300 sq ft foldable home Elon Musk reportedly lives in. Would you live in one?\n\n@boxabl #boxabl #fazerug #casita #tinyhome #elonmusk",
       "slot": "2026-11-24 21:00 IST",
       "approved": true,
-      "posted": false,
-      "submitted": false
+      "posted": true,
+      "submitted": false,
+      "post_url": "https://www.instagram.com/reel/DgIRNhCIQxc/",
+      "ig_media_id": "18103585916637835",
+      "fb_post_url": "https://www.facebook.com/1373322172540123/videos/1147366711517701",
+      "posted_at": "2026-11-24T15:25:14Z"
     }
   ],
   "auto_submit": true,
