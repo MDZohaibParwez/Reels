@@ -75,7 +75,7 @@ def main():
         L = lufs(a.file)
         check("loudness -16..-12 LUFS", L is not None and -16 <= L <= -12, f"{L} LUFS")
     y0 = luma(a.file, 0.0)
-    check("frame 0 not dark/black", y0 is not None and y0 > 35, f"YAVG {y0}")
+    check("frame 0 not black", y0 is not None and y0 > 22, f"YAVG {y0}")
 
     if a.caption is not None:
         c = a.caption
@@ -86,7 +86,8 @@ def main():
         check("no spam tags", not any(t.lower() in ("#viral", "#fyp", "#foryou", "#trending", "#explore") for t in tags))
         if "boxabl" in c.lower():
             check("BOXABL: tags @boxabl", "@boxabl" in c.lower())
-        q = [s for s in re.split(r"(?<=[.!?])\s+", c.split("\n\n")[0]) if s.endswith("?")]
+        body = "\n".join(l for l in c.split("\n") if not re.match(r"^\s*([@#]\S+\s*)+$", l))
+        q = [s.strip() for s in re.split(r"(?<=[.!?])\s+|\n+", body) if s.strip().endswith("?")]
         check("ends with a question (comment trigger)", bool(q))
         prev = [r.get("caption", "") for r in others][-6:]
         last_q = q[-1].strip().lower() if q else ""

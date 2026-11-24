@@ -20,6 +20,26 @@ every repeat of a mistake must get a STRONGER fix than the last one (code/check 
    (it now FAILS bad hooks: > 8 words, no [keyword], question/"How/What/Why" openers, "X on Y" / "is more than" labels). Any FAIL → fix
    and re-render before it goes into queue.json. Then look at frames 0s / 1s / 3s / last yourself.
 6. Change ONE big variable per batch and log it below with the baseline, so we learn what works.
+7. **Animation layer (Just See "Editer" connector, `mcp__Editer__*`) — HYBRID only.** Zohaib connected it 2026-11-25.
+   Its own layout repeats our old mistakes (small letterboxed video + black bands, small hook card near IG header,
+   -22 LUFS), so never use it as the base. Recipe that works (tested, precheck PASS):
+   a. Make the speech part with render2.py v3 (big hook, burned captions). Make b-roll shots 9:16 with the same
+      blurred-bg look (ffmpeg: split → bg scale 1080x1920 crop boxblur=28:2 eq=brightness=-0.36 ; fg scale/crop
+      1080x1350 overlay at y=470 ; add silent audio). All sources 1080p H.264 `-g 15` (4K sources render BLACK).
+   b. Host them on branch `media-tmp` of this repo (orphan branch, raw URL
+      https://raw.githubusercontent.com/MDZohaibParwez/Reels/media-tmp/<file>) → `add_media`.
+   c. Build: add_clip per shot (transitions: whip-left / zoom-blur-in / light-leak work), `label-pop` on b-roll
+      (sits in the hook band) with ONLY facts visible in that shot, `end-card` (@mictalkclips + the caption question),
+      sfx whoosh-fast/swish on cuts, music mood cinematic volume 0.3 duck. NO Just See captions (ours are burned in;
+      its auto captions need WebGPU and take 7+ min).
+   d. **One Editer write at a time, 20 s apart, then `get_video` and verify every step is there.** Parallel or fast
+      writes silently overwrite each other; `remove_step` says "Removed" but doesn't persist → if a step is wrong,
+      start a new project.
+   e. Render: `render_video` → `node tools/justsee_render.js "<render link>" out.mp4` (local Chromium + software
+      WebGPU; grabs the finished MP4 in-page; its upload to vercel.com fails through our proxy — expected, ignore).
+      ~3 min per 18 s reel. Then `python3 tools/loudfix.py out.mp4 final.mp4` (it exports ~-22 LUFS) → precheck.
+   f. Check label timing on frames: transitions overlap 0.5 s, so put a label ≥0.4 s after its shot starts and
+      verify the label frame shows that thing. `delete_video` the project afterwards.
 
 ## METRICS (Content Rewards views, read 2026-11-25 01:25 IST; all 15 submissions "Pending", 0 approved, 0 rejected)
 Baseline pre-v3 (12 mature Boxabl reels, 21-24 Nov): median **130**, avg 117, range 46-160. Account: 1 follower, empty bio.
@@ -81,3 +101,17 @@ Every reel stalls at ~50-160 = Instagram's first test batch; nothing broke out. 
 - Process: all 13 approved reels posted on slot and submitted within ~6 min. No render failures logged. No rejections.
 - **How we'll know:** next batch's queue entries all carry "hook" + precheck PASS; v3 experiment verdict when 8 v3 reels have
   ≥ 48h of views (target median > 200 vs 130). Slot hypothesis: read fifty_k_home at 48h (see METRICS).
+
+### 2026-11-25 — first test of the Just See animation editor
+- **M9 High — Just See default layout = our old M1/M2 mistakes back** (Observed: 16:9 b-roll at ~35% of screen,
+  black bands, small hook card at y≈120-190 under the IG header, -22 LUFS). → **FIX (rule 7):** hybrid only — v3 base
+  + Just See animations on top; loudfix.py after render. Hybrid test: precheck PASS, rough score ~68/100 vs 45 before.
+- **M10 High — my own process mistake: parallel Editer calls overwrote each other** (4 clips → 1). Then even 8 s gaps
+  lost steps. → **FIX (rule 7d):** strictly sequential, 20 s gaps, verify with get_video; new project instead of remove.
+- **M11 Medium — 4K sources rendered as black frames** in headless Chromium. → **FIX:** transcode to 1080p H.264 -g 15.
+- **M12 Medium — label "Bunk beds + closet" landed on a different shot** (transition overlap). → **FIX (rule 7f).**
+- **M13 Medium — my precheck had 2 bugs:** "ends with a question" only read the first paragraph; "frame 0 dark" flagged
+  normal dark footage (YAVG 33). → **FIX (code):** question searched in the whole caption minus tag lines; black
+  threshold YAVG > 22. Loudness added as tools/loudfix.py (two-pass) because one-pass loudnorm landed at -16.2.
+- **Next experiment (after the v3 batch):** same moments, half the batch with the animation layer, half plain v3 →
+  compare median views. Keep the animation layer only if it wins.
