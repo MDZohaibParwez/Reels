@@ -4,7 +4,10 @@
 python3 render2.py SRC OUT START END --top "Manifested it, Said it, Achieved it!" \
     [--crop w:h:x:y] [--end-text "FINAL LINE"] [--assets assets] [--music-db -26]
 
-- 1080x1920, footage cropped to 4:5 (1080x1350) and placed under a thin italic top bar
+- 1080x1920, footage cropped to 4:5 (1080x1350, or 1:1 with --vh 1080) over a blurred, dimmed copy of itself
+  (no dead black bands). v3 (2026-11-24 audit): BIG bold hook headline (--top) visible from frame 0, inside
+  the Instagram safe zone (below the Reels header); mark highlight words with [brackets] -> yellow.
+  --hook-style classic restores the old thin italic bar.
 - slow push-in + punch-in "cuts" on every sentence, film grain, contrast, vignette
 - big bold captions in bursts (1-3 words), pop scale+fade, key words yellow/glow white
 - original cinematic pad (low) + whoosh/impact on big words, loudnorm voice
@@ -16,6 +19,7 @@ import numpy as np
 W, H = 1080, 1920
 VW, VH = 1080, 1350
 VTOP = 300
+HOOK_STYLE = "big"
 STOP = set(("a an the and or but to of in on at is are was were be am i you he she it we they me my your his her its "
             "our their this that for with as so just do does did not no now there there's we're i'm it's will "
             "can could would should have has had been being from by about into than then them those these what "
@@ -65,18 +69,40 @@ def sentences_of(words):
     return out
 
 
+def hook_text(top, maxlen=17):
+    """Wrap headline to <=2 lines (~maxlen chars each) and turn [word] into yellow."""
+    plain = re.sub(r"[\[\]]", "", top)
+    words, lines, cur = top.split(), [], ""
+    for w in words:
+        n = len(re.sub(r"[\[\]]", "", (cur + " " + w).strip()))
+        if cur and n > maxlen and len(lines) < 1:
+            lines.append(cur); cur = w
+        else:
+            cur = (cur + " " + w).strip()
+    lines.append(cur)
+    out = "\\N".join(lines)
+    out = re.sub(r"\[([^\]]+)\]", lambda m: "{\\c" + YELLOW + "}" + m.group(1) + "{\\c&H00FFFFFF&}", out)
+    return out, len(plain)
+
+
 def build_ass(words, top, dur, end_text, path):
     cap_y = VTOP + VH - (260 if VH >= 1350 else 190)
     L = ["[Script Info]", "ScriptType: v4.00+", f"PlayResX: {W}", f"PlayResY: {H}", "WrapStyle: 0", "",
          "[V4+ Styles]",
          "Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding",
+         "Style: Hook,Montserrat ExtraBold,104,&H00FFFFFF,&H00FFFFFF,&H00000000,&H78000000,1,0,0,0,100,100,0,0,1,6,5,5,40,40,0,1",
          "Style: Top,Montserrat,44,&H00F2F2F2,&H00FFFFFF,&H00000000,&H00000000,0,1,0,0,100,100,0.5,0,1,0,0,8,40,40,0,1",
          "Style: Cap,Montserrat ExtraBold,92,&H00FFFFFF,&H00FFFFFF,&H00000000,&H64000000,1,0,0,0,100,100,0,0,1,0,3,5,50,50,0,1",
          "Style: Glow,Montserrat ExtraBold,92,&H00FFFFFF,&H00FFFFFF,&H00FFFFFF,&H00000000,1,0,0,0,100,100,0,0,1,7,0,5,50,50,0,1",
          "", "[Events]", "Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text"]
-    # thin elegant top bar: line + text
-    L.append(f"Dialogue: 0,{ts(0)},{ts(dur)},Top,,0,0,0,,{{\\pos(540,215)\\fad(300,0)}}{top}")
-    L.append(f"Dialogue: 0,{ts(0)},{ts(dur)},Top,,0,0,0,,{{\\an7\\pos(240,282)\\alpha&HA0&\\p1}}m 0 0 l 600 0 600 2 0 2{{\\p0}}")
+    if HOOK_STYLE == "classic":  # old thin elegant top bar (pre-v3)
+        L.append(f"Dialogue: 0,{ts(0)},{ts(dur)},Top,,0,0,0,,{{\\pos(540,215)\\fad(300,0)}}{top.replace('[', '').replace(']', '')}")
+        L.append(f"Dialogue: 0,{ts(0)},{ts(dur)},Top,,0,0,0,,{{\\an7\\pos(240,282)\\alpha&HA0&\\p1}}m 0 0 l 600 0 600 2 0 2{{\\p0}}")
+    else:  # v3: big hook headline, readable on frame 0, centred in the band above the video
+        txt, n = hook_text(top)
+        fs = 104 if n <= 30 else 90
+        y = VTOP - 165
+        L.append(f"Dialogue: 3,{ts(0)},{ts(dur)},Hook,,0,0,0,,{{\\pos(540,{y})\\fs{fs}\\fscx94\\fscy94\\t(0,120,\\fscx100\\fscy100)}}{txt}")
     sfx = []
     last_sfx = -9
     bursts = bursts_of(words)
@@ -134,10 +160,16 @@ def main():
     p.add_argument("--music-db", type=float, default=-24)
     p.add_argument("--words")
     p.add_argument("--vh", type=int, default=1350)
+    p.add_argument("--hook-style", default="big", choices=["big", "classic"])
     p.add_argument("--fix", action="append", default=[], help="wrong=Right word fix, e.g. boxable=BOXABL")
     a = p.parse_args()
-    global VH, VTOP
-    VH = a.vh; VTOP = 300 if VH >= 1350 else 330
+    global VH, VTOP, HOOK_STYLE
+    HOOK_STYLE = a.hook_style
+    VH = a.vh
+    if HOOK_STYLE == "classic":
+        VTOP = 300 if VH >= 1350 else 330
+    else:  # leave room for a 2-line hook below the IG Reels header (~0-220px)
+        VTOP = 470 if VH >= 1350 else 500
     dur = a.end - a.start
     words = json.load(open(a.words)) if a.words else transcribe(a.src, a.start, a.end)
     fixes = [f.split("=", 1) for f in a.fix]
@@ -151,11 +183,15 @@ def main():
     total = dur + linger
     pre = f"crop={a.crop}," if a.crop else ""
     z = zoom_expr(words, dur)
-    vf = (f"[0:v]{pre}scale={VW*2}:{VH*2}:force_original_aspect_ratio=increase,crop={VW*2}:{VH*2},setsar=1,fps=30,"
+    bg = (f"[0:v]{pre}split[vm][vb];[vb]scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},setsar=1,fps=30,"
+          f"boxblur=28:2,eq=brightness=-0.36:saturation=0.7,tpad=stop_mode=clone:stop_duration={linger}[bg];")
+    if HOOK_STYLE == "classic":
+        bg = f"[0:v]{pre}null[vm];color=black:s={W}x{H}:d={total}:r=30[bg];"
+    vf = bg + (f"[vm]scale={VW*2}:{VH*2}:force_original_aspect_ratio=increase,crop={VW*2}:{VH*2},setsar=1,fps=30,"
           f"zoompan=z='{z}':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d=1:s={VW}x{VH}:fps=30,"
           f"eq=contrast=1.10:saturation=1.06:gamma=0.97,vignette=PI/5,noise=alls=7:allf=t,"
           f"tpad=stop_mode=clone:stop_duration={linger}[v0];"
-          f"color=black:s={W}x{H}:d={total}:r=30[bg];[bg][v0]overlay=0:{VTOP}:shortest=1,ass={ass},format=yuv420p[v]")
+          f"[bg][v0]overlay=0:{VTOP}:shortest=1,ass={ass},format=yuv420p[v]")
     inputs = ["-ss", str(a.start), "-to", str(a.end), "-i", a.src,
               "-i", f"{a.assets}/pad.wav", "-i", f"{a.assets}/whoosh.wav", "-i", f"{a.assets}/impact.wav"]
     af = [f"[0:a]loudnorm=I=-14:TP=-1.5,apad=pad_dur={linger}[voice]",
