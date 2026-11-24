@@ -41,6 +41,19 @@ every repeat of a mistake must get a STRONGER fix than the last one (code/check 
    f. Check label timing on frames: transitions overlap 0.5 s, so put a label ≥0.4 s after its shot starts and
       verify the label frame shows that thing. `delete_video` the project afterwards.
 
+8. **Footage = the FULL BOXABL Drive library, not the 14 short clips.** Library folder `14hsa8iKW0kFY9yAZBTsTUvxr_lgoGelk`
+   (hidden behind the "GOOGLE DRIVE" link in the footage doc; list it with `python3 tools/drive_ls.py <id>`, gdown one
+   file at a time). Best so far: FaZe Rug full tour `1B5ongVEt8FqerK0hfQw2VVhyb5S_E-xc` (fold race 640-783s, interior
+   360-410s, house-per-minute 106-126s used; giveaway idea 455-475s, scooter ride 482-600s, Las Vegas speedway 782-840s
+   still free), Elon Casita delivery b-roll `1-I1DxHAe6LNSMH-joldN6uHl4k8-Ie4j` (36s, no speech - perfect cutaways),
+   Airrack full `18BL24uFGteI0gef07zToTupnbdSJtJEg` (only 0-108s is in the BOXABL), "I Built a HOME in 48 Minutes"
+   `1n00gNsWGgFvdKcWIZ0fmn0cT3c5drFeA`, KVUE news `1bdrteAX8d77iMco3Kf87J52cmPfFH9bT`. The 14 short clips in folder
+   1XrfBd… are fully used.
+9. **Always pass the reel id to assemble.py** (`assemble.py plan.json out.mp4 <reel_id>`): it prints OVERLAP if a piece
+   re-uses a logged moment (footage_used.json) and records the new one. OVERLAP = pick another moment.
+10. **Never work around YouTube's bot block** (third-party downloaders through the remote browser were refused by the
+    safety check 2026-11-25). YouTube-only campaigns need Zohaib to drop files in Drive.
+
 ## METRICS (Content Rewards views, read 2026-11-25 01:25 IST; all 15 submissions "Pending", 0 approved, 0 rejected)
 Baseline pre-v3 (12 mature Boxabl reels, 21-24 Nov): median **130**, avg 117, range 46-160. Account: 1 follower, empty bio.
 Current rules (v3 layout + hook gate): **0 reels posted yet** (first batch = 2026-11-25) → no verdict.
@@ -115,3 +128,24 @@ Every reel stalls at ~50-160 = Instagram's first test batch; nothing broke out. 
   threshold YAVG > 22. Loudness added as tools/loudfix.py (two-pass) because one-pass loudnorm landed at -16.2.
 - **Next experiment (after the v3 batch):** same moments, half the batch with the animation layer, half plain v3 →
   compare median views. Keep the animation layer only if it wins.
+
+### 2026-11-25 — daily batch run (5 BOXABL reels, scores 70-75, all precheck PASS; joined Jason Wojo campaign)
+- **M14 High — footage ran dry and nothing told me.** All 14 short Drive clips had already been cut (checked by
+  transcribing every old reel = 6 min wasted), and no log said which moments were used. → **FIX (code):** assemble.py
+  now logs every reel's source ranges in `footage_used.json` and prints OVERLAP on re-use (old reels back-filled,
+  approx). **FIX (rule 8):** the real library is the linked Drive folder (60+ full videos) — listed with new
+  `tools/drive_ls.py` (gdown --folder timed out on it).
+- **M15 Medium — plan_words.py lost the last word of most pieces and doubled words at back-to-back cuts**
+  ("minute?", "true?", "it." missing; "the the", "in in"); every reel needed 5-8 hand fixes. → **FIX (code):** a word
+  belongs to the piece where it STARTS (+0.12s tolerance), same source word is never captioned twice, "U" ".S." joins
+  to "U.S.", and it prints `CHECK piece N` when a piece's last word ends > 0.35s before the cut. Tested on two
+  plans: all end words present, no duplicates.
+- **M16 Medium — lip-sync/frame-0 trade-off.** Two reels needed re-cuts because frame 0 was the wrong face (Galiano
+  instead of FaZe) or a busy mirror shot. Fix used: start the piece's VIDEO 0.3-0.4s later than its audio (`vs`) when
+  the face appears just after the cut, or reorder so a piece that opens on the celebrity's face goes first.
+  Always sample frames at 0/1/3s BEFORE writing captions (cheap) — done for all 5.
+- **M17 Low — blocked step:** tried a YouTube→MP4 site in the remote browser for Jason Wojo footage; refused as
+  bypassing YouTube's bot block. → rule 10. Asked Zohaib for Drive copies + bio link instead.
+- Scores honestly capped by the profile (6/15: 1 follower, empty bio) — every reel loses ~9 pts there until the bio is fixed.
+- **Test this batch:** first v3 reels with FaZe/Elon/Airrack spectacle + number hooks ("23 minutes", "every minute").
+  Read views at 48h vs baseline median 130.
