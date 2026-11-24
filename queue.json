@@ -221,11 +221,15 @@
       "slot": "2026-11-24 18:00 IST",
       "approved": true,
       "posted": true,
-      "submitted": false,
+      "submitted": true,
       "post_url": "https://www.instagram.com/reel/DgH8q2qgLHV/",
       "ig_media_id": "17995156908115498",
       "fb_post_url": "https://www.facebook.com/1373322172540123/videos/1013981138415129",
-      "posted_at": "2026-11-24T12:25:36Z"
+      "posted_at": "2026-11-24T12:25:36Z",
+      "submitted_platforms": [
+        "instagram"
+      ],
+      "submitted_at": "2026-11-24T12:28:44Z"
     },
     {
       "id": "2026-11-24_boxabl_fifty_k_home",
