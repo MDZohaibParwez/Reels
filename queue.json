@@ -298,9 +298,10 @@
       "hook": "FaZe Rug wants [this] in his backyard",
       "score": 70,
       "slot": "2026-11-25 09:00 IST",
-      "approved": false,
+      "approved": true,
       "posted": false,
-      "submitted": false
+      "submitted": false,
+      "approved_note": "owner replied ✅ (= sab approve)"
     },
     {
       "id": "2026-11-25_boxabl_fold_race",
@@ -311,9 +312,10 @@
       "hook": "They folded a whole house in [23] minutes",
       "score": 75,
       "slot": "2026-11-25 13:00 IST",
-      "approved": false,
+      "approved": true,
       "posted": false,
-      "submitted": false
+      "submitted": false,
+      "approved_note": "owner replied ✅ (= sab approve)"
     },
     {
       "id": "2026-11-25_boxabl_elon_spacex_delivery",
@@ -324,9 +326,10 @@
       "hook": "Elon swapped mansions for [this] home",
       "score": 73,
       "slot": "2026-11-25 18:00 IST",
-      "approved": false,
+      "approved": true,
       "posted": false,
-      "submitted": false
+      "submitted": false,
+      "approved_note": "owner replied ✅ (= sab approve)"
     },
     {
       "id": "2026-11-25_boxabl_house_per_minute",
@@ -337,9 +340,10 @@
       "hook": "They want to build a house [every] minute",
       "score": 71,
       "slot": "2026-11-25 21:00 IST",
-      "approved": false,
+      "approved": true,
       "posted": false,
-      "submitted": false
+      "submitted": false,
+      "approved_note": "owner replied ✅ (= sab approve)"
     },
     {
       "id": "2026-11-25_boxabl_airrack_spacious",
@@ -350,9 +354,10 @@
       "hook": "Airrack expected to be [crammed] in here",
       "score": 70,
       "slot": "2026-11-26 09:00 IST",
-      "approved": false,
+      "approved": true,
       "posted": false,
-      "submitted": false
+      "submitted": false,
+      "approved_note": "owner replied ✅ (= sab approve)"
     }
   ],
   "auto_submit": true,
