@@ -299,9 +299,13 @@
       "score": 70,
       "slot": "2026-11-25 09:00 IST",
       "approved": true,
-      "posted": false,
+      "posted": true,
       "submitted": false,
-      "approved_note": "owner replied ✅ (= sab approve)"
+      "approved_note": "owner replied ✅ (= sab approve)",
+      "post_url": "https://www.instagram.com/reel/DgJjuE0CNmE/",
+      "ig_media_id": "18184791277439897",
+      "fb_post_url": "https://www.facebook.com/1373322172540123/videos/1678218613750619",
+      "posted_at": "2026-11-25T03:25:36Z"
     },
     {
       "id": "2026-11-25_boxabl_fold_race",
