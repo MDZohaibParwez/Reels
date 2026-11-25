@@ -337,8 +337,8 @@
     },
     {
       "id": "2026-11-25_boxabl_elon_spacex_delivery",
-      "file": "clips/2026-11-25_boxabl_elon_spacex_delivery.mp4",
-      "url": "https://raw.githubusercontent.com/MDZohaibParwez/Reels/main/clips/2026-11-25_boxabl_elon_spacex_delivery.mp4",
+      "file": "clips/2026-11-25_boxabl_elon_spacex_delivery_js.mp4",
+      "url": "https://raw.githubusercontent.com/MDZohaibParwez/Reels/main/clips/2026-11-25_boxabl_elon_spacex_delivery_js.mp4",
       "campaign": "BOXABL (Clip Farm) - https://contentrewards.com/c/campaigns/188c3e39-7850-4896-94df-e7a5be0cfec3",
       "caption": "Elon Musk swapped mansions for a tiny home in Texas. This BOXABL Casita was delivered to SpaceX.\nIt's 20x20 ft, arrives folded on a truck and unfolds on site with a crane. Kitchen, bedroom and bathroom inside.\nA mansion or a 20x20 BOXABL next to the rockets?\n\n@boxabl #boxabl #elonmusk #spacex #casita #tinyhome",
       "hook": "Elon swapped mansions for [this] home",
@@ -347,7 +347,8 @@
       "approved": true,
       "posted": false,
       "submitted": false,
-      "approved_note": "owner replied ✅ (= sab approve)"
+      "approved_note": "owner replied ✅ (= sab approve)",
+      "edit": "Just See (Editer) transitions + sfx on v3 base; first 15s Editer render + original tail (local renderer goes black after 15.3s)"
     },
     {
       "id": "2026-11-25_boxabl_house_per_minute",
