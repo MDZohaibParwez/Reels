@@ -1,0 +1,8 @@
+{"hook":"FaZe Rug wants to [gift] this house","hook_end":2.4,"name":["FaZe Rug","YouTuber"],
+ "accent":"auto","special":["boxabl","house","fans","live","BOXABL","buy","truck"],
+ "cards":[
+  {"t0":6.45,"t1":7.9,"style":"pip","src":"/home/claude/src/casita.mp4","ss":13,"speed":6},
+  {"t0":9.55,"t1":10.95,"style":"paper"}
+ ],
+ "punch":[[2.28,3.72,1.06]],
+ "end_text":"Would you take a free BOXABL?","music_db":-27}

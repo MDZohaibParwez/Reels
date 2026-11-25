@@ -66,6 +66,20 @@ every repeat of a mistake must get a STRONGER fix than the last one (code/check 
     and a write sent too early silently overwrites the previous one). ~20 min per reel. Render is free (runs on
     device, no credits). Phone render links failed twice for Zohaib with "Failed to fetch" — don't depend on them.
 
+13. **PREMIUM STYLE is now the default edit (Zohaib, 2026-11-25 night — overrides rule 12 / Editer).** He showed two
+    reference edits (Jensen Huang "premium podcast" edit + Mark Sut before/after) and said our edits are weak. Use
+    `tools/premium.py` (example inputs in tools/premium_example/). Zohaib does NOT want to approve plans — plan the whole
+    edit yourself, he only sees the finished reel in the approval message.
+    a. assemble.py with `"size": [1080,1920]` → full-bleed A-roll. Pick each piece's `crop` w:h:x:y from frames so the
+       face sits upper-middle; crop OFF burned-in subtitles of the source (FaZe tour: `506:900:x:0`).
+    b. plan_words.py → hand-fix words (it mishears names: "phase road" = FaZe Rug, "boxable" = BOXABL).
+    c. scenes.json: hook (RULE 1), `name` lower-third for the celebrity, `special` = brand first ("boxabl"), 1 paper card
+       on the strongest value line, 1 `pip` card with WIDE b-roll that shows the WHOLE home (Casita delivery
+       `1-I1DxHAe6LNSMH-joldN6uHl4k8-Ie4j` 13-22s at speed 6 = home unfolding), `end_text` = caption question.
+       Cards max ~1.5 s each, 2 per 15-20 s reel. No punch-in on soft (upscaled) shots.
+    d. ALWAYS `--preview` 8-10 frames first and fix what you see, THEN full render (~85 s per 17 s reel), precheck,
+       frames 0/1/3/last, score /100.
+
 ## METRICS (Content Rewards views, read 2026-11-25 01:25 IST; all 15 submissions "Pending", 0 approved, 0 rejected)
 Baseline pre-v3 (12 mature Boxabl reels, 21-24 Nov): median **130**, avg 117, range 46-160. Account: 1 follower, empty bio.
 Current rules (v3 layout + hook gate): **0 reels posted yet** (first batch = 2026-11-25) → no verdict.
@@ -171,3 +185,15 @@ Every reel stalls at ~50-160 = Instagram's first test batch; nothing broke out. 
   20-45 s gaps. → rule 12: poll get_video until the write shows (~90-100 s) before the next write.
 - **M20 Low — first label "CAR FACTORY: 1 CAR EVERY MINUTE" ran off both edges.** → rule 12: ≤ 16 chars; check the
   label frame before queueing.
+
+### 2026-11-25 (night) — owner: "tum edit aacha nahi karte" → premium style renderer
+- **M21 High — our edits looked generic** (Observed by owner; Hypothesis: no fixed fonts/palette/scene types, captions
+  only, letterboxed video). → **FIX (code): tools/premium.py** — 2 fonts (Inter + Lora Bold Italic special word),
+  one accent colour, paper/halftone/grain textures, phrase-at-a-time paper cards, wide pip b-roll card, whoosh on
+  every card, hook + name lower-third on frame 0. Test reel faze_giveaway_premium: precheck PASS, score 70.
+- **M22 High (caught in preview) — accent picked FROM the footage made the special word invisible** (orange word on
+  FaZe's orange vest/helmet). → **FIX (code):** auto accent = complementary hue of the dominant colour.
+- **M23 Medium — source had burned-in subtitles** (FaZe's own cyan captions) → crop pieces to the top 900 px (rule 13a).
+- **M24 Medium — 1.1x punch-in on an already 2.1x-upscaled shot = blurry face, and face drifted out of crop.** → rule 13c.
+- **Next experiment:** whole next batch in premium style. Success = median views of the next 8 premium reels > 200
+  (baseline 130) and ≥ 1 reel > 500. If it loses to v3/Editer reels at 48h, iterate cards/hook, don't revert blindly.
