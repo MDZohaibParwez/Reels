@@ -54,6 +54,8 @@ every repeat of a mistake must get a STRONGER fix than the last one (code/check 
 10. **Never work around YouTube's bot block** (third-party downloaders through the remote browser were refused by the
     safety check 2026-11-25). YouTube-only campaigns need Zohaib to drop files in Drive.
 
+11. **Approval shortcut (Zohaib, 2026-11-25):** a reply of just "✅" = "sab approve" (approve every reel in that batch).
+
 ## METRICS (Content Rewards views, read 2026-11-25 01:25 IST; all 15 submissions "Pending", 0 approved, 0 rejected)
 Baseline pre-v3 (12 mature Boxabl reels, 21-24 Nov): median **130**, avg 117, range 46-160. Account: 1 follower, empty bio.
 Current rules (v3 layout + hook gate): **0 reels posted yet** (first batch = 2026-11-25) → no verdict.
