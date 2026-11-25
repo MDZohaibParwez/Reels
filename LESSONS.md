@@ -79,6 +79,19 @@ every repeat of a mistake must get a STRONGER fix than the last one (code/check 
        Cards max ~1.5 s each, 2 per 15-20 s reel. No punch-in on soft (upscaled) shots.
     d. ALWAYS `--preview` 8-10 frames first and fix what you see, THEN full render (~85 s per 17 s reel), precheck,
        frames 0/1/3/last, score /100.
+    e. (2026-11-26) Close-up face fills the top? scenes.json `"hook_y"` / `"end_y"` (default 300/360) move the hook and
+       end question onto the chest (e.g. 180 above a cap, 520 below a face that sits high). Card `text` is shown
+       phrase-at-a-time in chunks of ≤ 3 words / 15 chars → keep card text to ONE chunk ("only got *three*",
+       "*barber* shop") or the card shows a lone leftover word. premium.py now refuses to render a hook that fails the
+       precheck hook gate.
+14. **Before planning a moment, run `python3 tools/free.py <src.mp4> <start> <end>`** (FREE / OVERLAP from
+    footage_used.json). New library sources downloaded 2026-11-26 (Drive "1. Most Viewed YouTube"): `touring_elon.mp4`
+    = `1lwtGTL2epL8hlEnxV9vINQN42jTu3c65` (Paolo Tiramani sit-down interview + Casita tour; used 123-175, 545-570; free:
+    founder childhood 573-606, wall "break your foot" 181-196, 9.5 ft ceilings 391-430, queen bed/TV 457-486, "can I have
+    one?" 623-627), `inside_elon.mp4` = `19UfzvZwtPFBq9CikyqBCZwYeBMxq7cwP` (Enes Yilmazer factory tour; used 93-132,
+    605-680; free: thermos/igloo walls 211-237, steel "beyond overkill" 289-326, 90-min house 443-500, Casita tour
+    733-1005). FaZe tour `elonvisit.mp4` is now used up to 852 except 560-640 (house-a-minute talk = repeat topic).
+    Scan a new long video with whisper `base` on a numpy array (av 19 breaks faster-whisper's file decoding).
 
 ## METRICS (Content Rewards views, read 2026-11-26 01:20 IST; all 19 submissions "Pending", 0 approved, 0 rejected)
 Baseline pre-v3 (13 Boxabl reels, 21-24 Nov, all now 28-95h old): median **131**, avg 117, range 46-160. Account: 1 follower, empty bio.
@@ -223,3 +236,21 @@ Every reel still stalls at ~50-200 = Instagram's first test batch; nothing broke
   "Video unavailable" label is only the headless browser lacking H.264). Nothing to do except wait.
 - Note for setup: tools/assets/ is gitignored → run `python3 tools/sfx.py tools/assets` on a fresh clone before render2.py.
 - Experiments: v3 (8 reels ≥48h, target median > 200) and premium style — no verdict yet (n=4 / n=0). Slot experiment closed (see METRICS).
+
+### 2026-11-26 — daily batch run (5 BOXABL premium reels, scores 70-74, all precheck PASS; campaigns checked)
+- Campaigns (Discover, 03:00 IST): nothing new fits a talk/podcast/business account with budget left. Social Commerce News
+  (podcast, $2/1K) = $1,998/$2,000 used, not accepting clips. Kitsch x Nic Vans (Clip Farm, $1.50/1K, $36.9K left) =
+  Love Island Santa hair-gift ad, entertainment → not our niche, not joined (told owner). Most budget is GTA 6 / music.
+  BOXABL still $61K left. Note: on Discover cards "$X / $Y" = X already SPENT, not left.
+- **M26 Medium — 10 min lost on an already-used moment.** Transcribed + framed FaZe's scooter/highway-patrol scene
+  (483-533) and assembled it before assemble.py printed OVERLAP (car_drop's logged range 475-533). → **FIX (code):**
+  `tools/free.py <src> <start> <end>` prints FREE/OVERLAP + every used range; rule 14 = run it before planning.
+- **M27 Low — hook failed precheck only after the full render** (9 words, ~90 s render wasted). → **FIX (code):**
+  premium.py runs precheck's hook_checks before rendering/previewing and exits "HOOK FAIL before render".
+- **M28 Low — env:** faster-whisper 1.2.1 + av 19 → `open() got an unexpected keyword 'metadata_errors'` when given a
+  file path; downgrade (av<15) fails to build. plan_words.py already feeds a numpy array (works); ad-hoc scans must too.
+- **M29 Medium (caught in preview) — close-up faces under the hook/end text** (Paolo's cap-to-chin fills the top 40%;
+  hook at y=300 covered his eyes; end text + @handle sat on his glasses; handle y was hard-coded). → **FIX (code):**
+  premium.py `hook_y` / `end_y` in scenes.json, handle follows end_y (rule 13e).
+- Test this batch: 3 new sources (founder interview, Enes factory tour, FaZe speedway) + first reels whose frame 0 is
+  the product/action instead of a celebrity face (house_in_a_box, factory_disney). Compare at 48h vs celeb-face reels.

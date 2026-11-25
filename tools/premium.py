@@ -11,6 +11,7 @@ scenes.json:
 {
   "hook": "FaZe Rug [won] this house",      # RULE 1 hook, big from frame 0, [keyword] in serif italic accent
   "hook_end": 2.6,                          # seconds the hook stays
+  "hook_y": 300,  "end_y": 360,                          # optional: top of the hook block (lower = 190 when a close-up face fills the top)
   "name": ["FaZe Rug", "YouTuber"],          # optional lower-third during the hook
   "accent": "auto" | "#3D7BFF",              # auto = picked from the footage (style fundamental #2)
   "special": ["house", "free"],              # words forced to be the big serif word in their caption
@@ -213,6 +214,12 @@ def main():
     ap.add_argument("--preview", help="comma list of seconds -> write PNG frames only (fast look before a full render;\n                    pip b-roll frames are not exact in preview)")
     a = ap.parse_args()
     S = json.load(open(a.scenes)); words = json.load(open(a.words))
+    # 2026-11-26 (LESSONS M27): a 9-word hook rendered fine and only failed precheck AFTER the full render -> re-render.
+    # Run the same hook gate as precheck.py BEFORE rendering (preview too), so a bad hook can't cost a render.
+    import sys as _s; _s.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    from precheck import hook_checks
+    bad = [f"{n} ({d})" for n, ok, d in hook_checks(S["hook"]) if not ok]
+    if bad: raise SystemExit("HOOK FAIL before render: " + "; ".join(bad))
     dur = float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", a.aroll],
                                capture_output=True, text=True).stdout)
     acc = hexrgb(S["accent"]) if S.get("accent", "auto") != "auto" else auto_accent(a.aroll, dur)
@@ -360,7 +367,7 @@ def main():
         if t < hook_end + 0.2:
             al = 1.0 if t < hook_end else 1 - (t - hook_end) / 0.2
             ov = Image.new("RGBA", (W, H), (0, 0, 0, 0)); ov.alpha_composite(topgrad)
-            draw_tokens(ov, hook_placed, 70, 300, set(range(len(htoks))), ages=None, stroke=4)
+            draw_tokens(ov, hook_placed, 70, S.get("hook_y", 300), set(range(len(htoks))), ages=None, stroke=4)  # hook_y: move the hook off a big close-up face (2026-11-26)
             if name and 0.3 < t:
                 d = ImageDraw.Draw(ov); y0 = 1500
                 d.rectangle((70, y0, 77, y0 + 74), fill=acc + (255,))
@@ -372,8 +379,8 @@ def main():
         if end_placed and t >= end_t and not card:
             ov = Image.new("RGBA", (W, H), (0, 0, 0, 0)); ov.alpha_composite(topgrad)
             ages = {i: int((t - end_t) * FPS) for i in range(len(etoks))}
-            draw_tokens(ov, end_placed, 80, 360, set(range(len(etoks))), ages=ages, stroke=3)
-            ImageDraw.Draw(ov).text((W / 2, 380 + end_h + 70), "@mictalkclips", font=font("bold", 40),
+            draw_tokens(ov, end_placed, 80, S.get("end_y", 360), set(range(len(etoks))), ages=ages, stroke=3)
+            ImageDraw.Draw(ov).text((W / 2, S.get("end_y", 360) + 20 + end_h + 70), "@mictalkclips", font=font("bold", 40),
                                     fill=acc + (255,), anchor="ms")
             img.alpha_composite(ov)
         out = np.asarray(img.convert("RGB")).astype(np.int16) + grains[fi % len(grains)]
