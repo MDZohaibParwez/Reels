@@ -345,10 +345,14 @@
       "score": 73,
       "slot": "2026-11-25 18:00 IST",
       "approved": true,
-      "posted": false,
+      "posted": true,
       "submitted": false,
       "approved_note": "owner replied ✅ (= sab approve)",
-      "edit": "Just See (Editer) transitions + sfx on v3 base; first 15s Editer render + original tail (local renderer goes black after 15.3s)"
+      "edit": "Just See (Editer) transitions + sfx on v3 base; first 15s Editer render + original tail (local renderer goes black after 15.3s)",
+      "post_url": "https://www.instagram.com/reel/DgKhjIWRCFt/",
+      "ig_media_id": "18134547151695116",
+      "fb_post_url": "https://www.facebook.com/1373322172540123/videos/1392958452746467",
+      "posted_at": "2026-11-25T12:26:14Z"
     },
     {
       "id": "2026-11-25_boxabl_house_per_minute",
