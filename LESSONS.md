@@ -56,6 +56,16 @@ every repeat of a mistake must get a STRONGER fix than the last one (code/check 
 
 11. **Approval shortcut (Zohaib, 2026-11-25):** a reply of just "✅" = "sab approve" (approve every reel in that batch).
 
+12. **Zohaib wants every reel edited in Editer (Just See) — said 2026-11-25 ("vahi karo edit, yaha aacha nahi ho raha").**
+    Recipe that works (all 3 re-edits on 25 Nov passed precheck): v3 render2 reel → cut it into **max 3 shots** at
+    hard cuts (`-g 15`) → push to `media-tmp` → Editer: add_media ×3, add_clip ×3 (transitions **whip-left,
+    zoom-blur-in, push-left** render; light-leak/crossfade untested-bad), add_text position **bottom**, style bold,
+    **≤ 16 characters** (longer runs off-screen) → render with `tools/justsee_render.js` → keep first 15.0s →
+    `bash tools/justsee_stitch.sh <editer.mp4> 15.0 <last_shot.mp4> <offset_in_last_shot> <out.mp4>` → precheck.
+    **Every Editer write: wait ~90-100 s, then get_video must show it before the next write** (its server lags 1-2 min
+    and a write sent too early silently overwrites the previous one). ~20 min per reel. Render is free (runs on
+    device, no credits). Phone render links failed twice for Zohaib with "Failed to fetch" — don't depend on them.
+
 ## METRICS (Content Rewards views, read 2026-11-25 01:25 IST; all 15 submissions "Pending", 0 approved, 0 rejected)
 Baseline pre-v3 (12 mature Boxabl reels, 21-24 Nov): median **130**, avg 117, range 46-160. Account: 1 follower, empty bio.
 Current rules (v3 layout + hook gate): **0 reels posted yet** (first batch = 2026-11-25) → no verdict.
@@ -151,3 +161,13 @@ Every reel stalls at ~50-160 = Instagram's first test batch; nothing broke out. 
 - Scores honestly capped by the profile (6/15: 1 follower, empty bio) — every reel loses ~9 pts there until the bio is fixed.
 - **Test this batch:** first v3 reels with FaZe/Elon/Airrack spectacle + number hooks ("23 minutes", "every minute").
   Read views at 48h vs baseline median 130.
+
+### 2026-11-25 (afternoon) — owner asked to switch editing to Editer
+- **M18 High — Editer renders broke on the cloud machine:** 4-clip projects failed "Shader compile failed: unknown";
+  3-clip projects rendered but went black from 15.3 s (all 4 renders, incl. no-text ones). Bisected: count/length,
+  not one transition. → **FIX (code):** `tools/justsee_stitch.sh` (Editer first 15 s + original tail, loudness
+  matched) and rule 12 (max 3 clips). Tested on 3 reels, join invisible, blackdetect clean, precheck PASS.
+- **M19 Medium — Editer server lag lost steps 3 times** (overwritten clip, lost text, duplicated clip) even with
+  20-45 s gaps. → rule 12: poll get_video until the write shows (~90-100 s) before the next write.
+- **M20 Low — first label "CAR FACTORY: 1 CAR EVERY MINUTE" ran off both edges.** → rule 12: ≤ 16 chars; check the
+  label frame before queueing.
