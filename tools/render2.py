@@ -92,8 +92,11 @@ def build_ass(words, top, dur, end_text, path):
          "Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding",
          "Style: Hook,Montserrat ExtraBold,104,&H00FFFFFF,&H00FFFFFF,&H00000000,&H78000000,1,0,0,0,100,100,0,0,1,6,5,5,40,40,0,1",
          "Style: Top,Montserrat,44,&H00F2F2F2,&H00FFFFFF,&H00000000,&H00000000,0,1,0,0,100,100,0.5,0,1,0,0,8,40,40,0,1",
-         "Style: Cap,Montserrat ExtraBold,92,&H00FFFFFF,&H00FFFFFF,&H00000000,&H64000000,1,0,0,0,100,100,0,0,1,0,3,5,50,50,0,1",
-         "Style: Glow,Montserrat ExtraBold,92,&H00FFFFFF,&H00FFFFFF,&H00FFFFFF,&H00000000,1,0,0,0,100,100,0,0,1,7,0,5,50,50,0,1",
+         # 2026-11-26 audit (M25): captions had Outline 0 + a WHITE glow -> white text vanished on bright footage
+         # (fold_race 1s "BOXABL RIGHT" on a white wall, house_per_minute 0s "DUDE" on pale ground). Now: thick black
+         # outline + dark soft halo behind every caption, readable on any background.
+         "Style: Cap,Montserrat ExtraBold,92,&H00FFFFFF,&H00FFFFFF,&H00000000,&H64000000,1,0,0,0,100,100,0,0,1,6,3,5,50,50,0,1",
+         "Style: Glow,Montserrat ExtraBold,92,&H00000000,&H00000000,&H00000000,&H00000000,1,0,0,0,100,100,0,0,1,14,0,5,50,50,0,1",
          "", "[Events]", "Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text"]
     if HOOK_STYLE == "classic":  # old thin elegant top bar (pre-v3)
         L.append(f"Dialogue: 0,{ts(0)},{ts(dur)},Top,,0,0,0,,{{\\pos(540,215)\\fad(300,0)}}{top.replace('[', '').replace(']', '')}")
@@ -127,7 +130,8 @@ def build_ass(words, top, dur, end_text, path):
             parts = text.split(" "); h = len(parts) // 2
             text = " ".join(parts[:h]) + "\\N" + " ".join(parts[h:])
         pop = "\\fscx72\\fscy72\\t(0,140,\\fscx104\\fscy104)\\t(140,220,\\fscx100\\fscy100)\\fad(90,60)"
-        L.append(f"Dialogue: 0,{ts(st)},{ts(en)},Glow,,0,0,0,,{{\\pos(540,{cap_y})\\blur10\\alpha&HC8&{pop}}}{text}")
+        gtext = re.sub(r"\{\\c[^}]*\}", "", text)  # halo = one dark colour, no yellow blob
+        L.append(f"Dialogue: 0,{ts(st)},{ts(en)},Glow,,0,0,0,,{{\\pos(540,{cap_y})\\blur12\\alpha&H70&{pop}}}{gtext}")
         L.append(f"Dialogue: 1,{ts(st)},{ts(en)},Cap,,0,0,0,,{{\\pos(540,{cap_y}){pop}}}{text}")
         if key and st - last_sfx > 3.0:
             sfx.append((st, "whoosh" if len(sfx) % 2 == 0 else "impact")); last_sfx = st

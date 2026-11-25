@@ -17,7 +17,7 @@
    ],
    "views": 160,
    "status": "Pending",
-   "views_checked_at": "2026-11-24T19:55:00Z"
+   "views_checked_at": "2026-11-25T19:50:00Z"
   },
   {
    "id": "2026-11-22_boxabl_postmalone_kitchen",
@@ -37,7 +37,7 @@
    "submitted_at": "2026-11-22T03:28:00Z",
    "views": 153,
    "status": "Pending",
-   "views_checked_at": "2026-11-24T19:55:00Z"
+   "views_checked_at": "2026-11-25T19:50:00Z"
   },
   {
    "id": "2026-11-22_boxabl_hours_not_months",
@@ -57,7 +57,7 @@
    "submitted_at": "2026-11-22T07:28:30Z",
    "views": 119,
    "status": "Pending",
-   "views_checked_at": "2026-11-24T19:55:00Z"
+   "views_checked_at": "2026-11-25T19:50:00Z"
   },
   {
    "id": "2026-11-22_boxabl_elon_assembly_line",
@@ -77,7 +77,7 @@
    "submitted_at": "2026-11-22T12:27:23Z",
    "views": 156,
    "status": "Pending",
-   "views_checked_at": "2026-11-24T19:55:00Z"
+   "views_checked_at": "2026-11-25T19:50:00Z"
   },
   {
    "id": "2026-11-22_boxabl_phase2_future",
@@ -97,7 +97,7 @@
    "submitted_at": "2026-11-22T15:29:00Z",
    "views": 52,
    "status": "Pending",
-   "views_checked_at": "2026-11-24T19:55:00Z"
+   "views_checked_at": "2026-11-25T19:50:00Z"
   },
   {
    "id": "2026-11-23_boxabl_car_drop",
@@ -118,7 +118,7 @@
    "submitted_at": "2026-11-23T03:27:42Z",
    "views": 118,
    "status": "Pending",
-   "views_checked_at": "2026-11-24T19:55:00Z"
+   "views_checked_at": "2026-11-25T19:50:00Z"
   },
   {
    "id": "2026-11-23_boxabl_elon_nda",
@@ -139,7 +139,7 @@
    "submitted_at": "2026-11-23T07:29:01Z",
    "views": 136,
    "status": "Pending",
-   "views_checked_at": "2026-11-24T19:55:00Z"
+   "views_checked_at": "2026-11-25T19:50:00Z"
   },
   {
    "id": "2026-11-23_boxabl_airrack_night",
@@ -160,7 +160,7 @@
    "submitted_at": "2026-11-23T12:31:30Z",
    "views": 130,
    "status": "Pending",
-   "views_checked_at": "2026-11-24T19:55:00Z"
+   "views_checked_at": "2026-11-25T19:50:00Z"
   },
   {
    "id": "2026-11-23_boxabl_caruso_30000",
@@ -182,7 +182,7 @@
    "submitted_at": "2026-11-23T15:32:00Z",
    "views": 46,
    "status": "Pending",
-   "views_checked_at": "2026-11-24T19:55:00Z"
+   "views_checked_at": "2026-11-25T19:50:00Z"
   },
   {
    "id": "2026-11-23_timwhite_brad_pitt",
@@ -219,9 +219,9 @@
     "instagram"
    ],
    "submitted_at": "2026-11-24T03:31:00Z",
-   "views": 56,
+   "views": 140,
    "status": "Pending",
-   "views_checked_at": "2026-11-24T19:55:00Z"
+   "views_checked_at": "2026-11-25T19:50:00Z"
   },
   {
    "id": "2026-11-24_boxabl_elon_all_three",
@@ -243,7 +243,7 @@
    "submitted_at": "2026-11-24T07:27:03Z",
    "views": 144,
    "status": "Pending",
-   "views_checked_at": "2026-11-24T19:55:00Z"
+   "views_checked_at": "2026-11-25T19:50:00Z"
   },
   {
    "id": "2026-11-24_boxabl_foam_walls",
@@ -263,9 +263,9 @@
     "instagram"
    ],
    "submitted_at": "2026-11-24T12:28:44Z",
-   "views": 130,
+   "views": 131,
    "status": "Pending",
-   "views_checked_at": "2026-11-24T19:55:00Z"
+   "views_checked_at": "2026-11-25T19:50:00Z"
   },
   {
    "id": "2026-11-24_boxabl_fifty_k_home",
@@ -285,9 +285,9 @@
     "instagram"
    ],
    "submitted_at": "2026-11-24T15:27:28Z",
-   "views": 9,
+   "views": 125,
    "status": "Pending",
-   "views_checked_at": "2026-11-24T19:55:00Z"
+   "views_checked_at": "2026-11-25T19:50:00Z"
   },
   {
    "id": "2026-11-25_boxabl_faze_backyard",
@@ -310,7 +310,10 @@
     "instagram"
    ],
    "submitted_at": "2026-11-25T03:27:55Z",
-   "fb_note": "Campaign pays YouTube/TikTok/Instagram/X only, FB not submitted"
+   "fb_note": "Campaign pays YouTube/TikTok/Instagram/X only, FB not submitted",
+   "views": 145,
+   "status": "Pending",
+   "views_checked_at": "2026-11-25T19:50:00Z"
   },
   {
    "id": "2026-11-25_boxabl_fold_race",
@@ -333,7 +336,10 @@
     "instagram"
    ],
    "submitted_at": "2026-11-25T07:27:08Z",
-   "fb_note": "Campaign pays YouTube/TikTok/Instagram/X only, FB not submitted"
+   "fb_note": "Campaign pays YouTube/TikTok/Instagram/X only, FB not submitted",
+   "views": 140,
+   "status": "Pending",
+   "views_checked_at": "2026-11-25T19:50:00Z"
   },
   {
    "id": "2026-11-25_boxabl_elon_spacex_delivery",
@@ -357,7 +363,10 @@
     "instagram"
    ],
    "submitted_at": "2026-11-25T12:28:39Z",
-   "fb_note": "Campaign pays YouTube/TikTok/Instagram/X only, FB not submitted"
+   "fb_note": "Campaign pays YouTube/TikTok/Instagram/X only, FB not submitted",
+   "views": 203,
+   "status": "Pending",
+   "views_checked_at": "2026-11-25T19:50:00Z"
   },
   {
    "id": "2026-11-25_boxabl_house_per_minute",
@@ -381,7 +390,10 @@
     "instagram"
    ],
    "submitted_at": "2026-11-25T15:31:00Z",
-   "fb_note": "Campaign pays YouTube/TikTok/Instagram/X only, FB not submitted"
+   "fb_note": "Campaign pays YouTube/TikTok/Instagram/X only, FB not submitted",
+   "views": 159,
+   "status": "Pending",
+   "views_checked_at": "2026-11-25T19:50:00Z"
   },
   {
    "id": "2026-11-25_boxabl_airrack_spacious",

@@ -80,28 +80,35 @@ every repeat of a mistake must get a STRONGER fix than the last one (code/check 
     d. ALWAYS `--preview` 8-10 frames first and fix what you see, THEN full render (~85 s per 17 s reel), precheck,
        frames 0/1/3/last, score /100.
 
-## METRICS (Content Rewards views, read 2026-11-25 01:25 IST; all 15 submissions "Pending", 0 approved, 0 rejected)
-Baseline pre-v3 (12 mature Boxabl reels, 21-24 Nov): median **130**, avg 117, range 46-160. Account: 1 follower, empty bio.
-Current rules (v3 layout + hook gate): **0 reels posted yet** (first batch = 2026-11-25) → no verdict.
-| reel | views | type | slot (IST) |
-|---|---|---|---|
-| elon_guesthouse | 160 | celeb | 02:48 |
-| elon_assembly_line | 156 | celeb | 18:00 |
-| postmalone_kitchen | 153 | celeb | 09:00 |
-| elon_all_three | 144 | celeb | 13:00 |
-| elon_nda | 136 | celeb | 13:00 |
-| airrack_night | 130 | celeb | 18:00 |
-| foam_walls | 130 | product | 18:00 |
-| hours_not_months | 119 | product | 13:00 |
-| car_drop | 118 | spectacle | 09:00 |
-| weight_trailer | 56 | product | 09:00 |
-| phase2_future | 52 | business | 21:00 |
-| caruso_30000 | 46 | business | 21:00 |
-| fifty_k_home | 9 (only 4.5h old) | celeb | 21:00 |
-By slot (Measured, mature reels): 18:00 avg 139 (n=3) · 13:00 avg 133 (n=3) · 09:00 avg 109 (n=3) · **21:00 avg 49 (n=2)**.
-Hypothesis (Low confidence): the 21:00 slot is weak — BUT both 21:00 reels were also business topics (confounded). fifty_k_home
-(celeb, 21:00) is the de-confounding test: if it stays < 60 at 48h, the slot is suspect; if it reaches ~130, topic was the cause.
-Every reel stalls at ~50-160 = Instagram's first test batch; nothing broke out. $0.50/1K + $1 min payout → need ~2,000 views per clip to earn anything.
+## METRICS (Content Rewards views, read 2026-11-26 01:20 IST; all 19 submissions "Pending", 0 approved, 0 rejected)
+Baseline pre-v3 (13 Boxabl reels, 21-24 Nov, all now 28-95h old): median **131**, avg 117, range 46-160. Account: 1 follower, empty bio.
+Current rules (v3 hook layout + hook gate, 25 Nov): **n=4, all < 17h old** → median **152** (140-203). No verdict until 8 reels ≥ 48h.
+Early signal (Measured, young): the 2 Editer-edited reels have the fastest start (spacex 203 @7h, house 159 @4h) vs plain v3
+(145 @16h, 140 @12h). Confounded with celeb face on frame 0 / slot → Hypothesis only.
+Reels keep growing after 48h (weight_trailer 56 → 140, fifty_k_home 9 → 125): compare reels at the SAME age, not raw totals.
+| reel | views | age (h) | type | slot (IST) | layout |
+|---|---|---|---|---|---|
+| elon_spacex_delivery | 203 | 7 | celeb | 18:00 | v3+Editer |
+| elon_guesthouse | 160 | 95 | celeb | 02:48 | old |
+| house_per_minute | 159 | 4 | spectacle | 21:00 | v3+Editer |
+| elon_assembly_line | 156 | 79 | celeb | 18:00 | old |
+| postmalone_kitchen | 153 | 88 | celeb | 09:00 | old |
+| faze_backyard | 145 | 16 | celeb | 09:00 | v3 |
+| elon_all_three | 144 | 36 | celeb | 13:00 | old |
+| weight_trailer | 140 | 40 | product | 09:00 | old |
+| fold_race | 140 | 12 | spectacle | 13:00 | v3 |
+| elon_nda | 136 | 60 | celeb | 13:00 | old |
+| foam_walls | 131 | 31 | product | 18:00 | old |
+| airrack_night | 130 | 55 | celeb | 18:00 | old |
+| fifty_k_home | 125 | 28 | celeb | 21:00 | old |
+| hours_not_months | 119 | 84 | product | 13:00 | old |
+| car_drop | 118 | 64 | spectacle | 09:00 | old |
+| phase2_future | 52 | 76 | business | 21:00 | old |
+| caruso_30000 | 46 | 52 | business | 21:00 | old |
+Topic (Measured, pre-v3): celeb avg 143 (n=7) · product/spectacle avg 127 (n=4) · **business avg 49 (n=2)**.
+**Slot verdict (2026-11-26): 21:00 is NOT the problem — REJECTED.** fifty_k_home (celeb, 21:00) reached 125 and house_per_minute
+(21:00) 159 in 4h; the two 21:00 losers were business topics. Keep the 4 slots; avoid business/abstract topics (rule 3).
+Every reel still stalls at ~50-200 = Instagram's first test batch; nothing broke out. $0.50/1K + $1 min payout → need ~2,000 views per clip to earn anything.
 
 ## MISTAKE LOG
 ### 2026-11-24 — full audit with creator-audit-master (score of a typical pre-v3 reel: 45/100 — hook 6/20, retention 10/20, edit 12/20, story 9/15, caption 5/10, profile 3/15)
@@ -197,3 +204,22 @@ Every reel stalls at ~50-160 = Instagram's first test batch; nothing broke out. 
 - **M24 Medium — 1.1x punch-in on an already 2.1x-upscaled shot = blurry face, and face drifted out of crop.** → rule 13c.
 - **Next experiment:** whole next batch in premium style. Success = median views of the next 8 premium reels > 200
   (baseline 130) and ≥ 1 reel > 500. If it loses to v3/Editer reels at 48h, iterate cards/hook, don't revert blindly.
+
+### 2026-11-26 — daily self-review (01:20 IST). Best 48h = elon_spacex_delivery (203 @7h, v3+Editer), worst 48h = fifty_k_home
+(125 @28h, old layout); also checked fold_race (140 @12h, slowest v3). No rejections. Scores: spacex 78, fold_race 70, fifty_k 48.
+- Observed (frames): spacex = Elon's face + big hook on frame 0, b-roll truck/SpaceX by 3s, 21.5s. fold_race = backs of 2 workers on
+  frame 0 (no face), 30.3s (longest of the batch). fifty_k = old layout (thin hook, black bands) - precheck FAIL by today's rules
+  (caption line 1 = 170 chars, no hook), expected for a pre-v3 reel.
+- **M25 High — burned captions vanished on bright footage.** Observed: fold_race 1.0s "BOXABL RIGHT" white-on-white-wall barely
+  readable; house_per_minute 0s "DUDE" faint on pale ground. Cause (code): render2.py `Cap` style had Outline 0 and the `Glow`
+  layer was WHITE (so it made white text even less readable on bright backgrounds). Every v3 + Editer reel inherits this.
+  → **FIX (code):** Cap gets a 6 px black outline; Glow layer is now a dark soft halo (black, blur 12, ~56% opacity), yellow key
+  words no longer glow yellow. Test render on the same white-wall shot: caption crisp and readable (before/after frames checked),
+  precheck PASS on size/loudness/frame 0. premium.py captions already use stroke 3 + shadow (unchanged).
+  How we'll know: every new render2/Editer reel's frames at 0/1/3s show outlined captions; no "faint caption" note in next audits.
+- Hypothesis (Low, n=4): Editer-edited reels + celebrity face on frame 0 start fastest. Next check: compare all 4 v3 reels at 48h.
+- Process: all approved reels posted on slot and submitted within ~5 min; airrack_spacious due 09:00 IST today; faze_giveaway_premium
+  waiting for owner approval. Timothy White draft still "Pending" brand review since 22 Nov (file on CR is fine: 20.6 MB mp4; the
+  "Video unavailable" label is only the headless browser lacking H.264). Nothing to do except wait.
+- Note for setup: tools/assets/ is gitignored → run `python3 tools/sfx.py tools/assets` on a fresh clone before render2.py.
+- Experiments: v3 (8 reels ≥48h, target median > 200) and premium style — no verdict yet (n=4 / n=0). Slot experiment closed (see METRICS).
