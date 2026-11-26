@@ -101,8 +101,12 @@ every repeat of a mistake must get a STRONGER fix than the last one (code/check 
        intro animation on frame 0 (text/visual flies in), a WHOOSH on the first frame, an energetic music bed from 0 s,
        then a suspense sound before the reveal. Hook text AND live caption both on screen from frame 0.
     b. **Captions "normal"** — make them glowing (soft outer glow in the accent colour), bigger, more energy.
-    c. **No colour grading** — every shot must be graded (contrast, colour, look); amount = his Drive reference
-       1nw7brKSEU_VvGOK5PHg12baeKkVFLPIY (could not download on 26 Nov: sharing not public).
+    c. **No colour grading** — every shot must be graded. Reference = his Drive video 1nw7BrKSEU_VvGOK5PHg12baeKkVFLPIY
+       (colour-grading tutorial: Rec-709 → shadows & highlights → colour wheels → luminance → hues → GLOW). Measured
+       26 Nov (mean of 7 frames, ref vs our elon_joke_call): saturation 109 vs 56 (≈2x), warmth Lab b +13 vs +3,
+       blacks p5 L 32 vs 15 (soft lifted/film blacks), highlights p95 L 221 vs 186 (brighter), contrast std ≈ same (58),
+       plus a highlight glow/bloom. Target for talking heads: sat ×1.6-1.9, b +8..+12, p5 ~25-30, p95 ~210-220, glow 15-20%
+       — and a precheck that measures these numbers on the render.
     d. **No face tracking** — static crops leave the face drifting/side-on. Use real face tracking (he is adding a
        face-tracking + colour-grading tool to our toolset; use it when it arrives).
     e. **0:12 card IN = weak** (0.13 s cross-fade + soft -9 dB generated whoosh) and **0:13 card→card change = weak**
