@@ -490,11 +490,12 @@
    "hook": "FaZe would turn this into a [man cave]",
    "score": 72,
    "slot": "2026-11-26 21:00 IST",
-   "approved": true,
+   "approved": false,
    "posted": false,
    "submitted": false,
    "edit": "premium.py",
-   "approved_note": "owner replied ✅ (= sab approve)"
+   "approved_note": "owner replied ✅ (= sab approve)",
+   "hold": "2026-11-26: owner said roko - premium training not good yet (weak start, captions, transitions, SFX, no grading). Re-edit before posting."
   },
   {
    "id": "2026-11-26_boxabl_factory_disney_ride",
@@ -505,11 +506,12 @@
    "hook": "This factory tour is a [Disney] ride",
    "score": 70,
    "slot": "2026-11-27 09:00 IST",
-   "approved": true,
+   "approved": false,
    "posted": false,
    "submitted": false,
    "edit": "premium.py",
-   "approved_note": "owner replied ✅ (= sab approve)"
+   "approved_note": "owner replied ✅ (= sab approve)",
+   "hold": "2026-11-26: owner said roko - premium training not good yet (weak start, captions, transitions, SFX, no grading). Re-edit before posting."
   },
   {
    "id": "2026-11-26_boxabl_shower_400",
@@ -520,11 +522,12 @@
    "hook": "BOXABL built a $1,000 shower for [$400]",
    "score": 70,
    "slot": "2026-11-27 13:00 IST",
-   "approved": true,
+   "approved": false,
    "posted": false,
    "submitted": false,
    "edit": "premium.py",
-   "approved_note": "owner replied ✅ (= sab approve)"
+   "approved_note": "owner replied ✅ (= sab approve)",
+   "hold": "2026-11-26: owner said roko - premium training not good yet (weak start, captions, transitions, SFX, no grading). Re-edit before posting."
   }
  ],
  "auto_submit": true,
