@@ -93,6 +93,21 @@ every repeat of a mistake must get a STRONGER fix than the last one (code/check 
     733-1005). FaZe tour `elonvisit.mp4` is now used up to 852 except 560-640 (house-a-minute talk = repeat topic).
     Scan a new long video with whisper `base` on a numpy array (av 19 breaks faster-whisper's file decoding).
 
+14. **PREMIUM STYLE IS PAUSED (owner, 2026-11-26: "training achhi nahi hai, roko").** Reel-making task is disabled and
+    the unposted premium reels are on hold (approved=false, "hold" note). Do NOT make or post premium reels until Zohaib
+    gives the go AND every item below is done. His feedback on elon_joke_call (posted 26 Nov 18:00):
+    a. **Start too heavy/static** — 0-3 s was a still side-profile + plain top text + tiny first caption. Needed: an
+       intro animation on frame 0 (text/visual flies in), a WHOOSH on the first frame, an energetic music bed from 0 s,
+       then a suspense sound before the reveal. Hook text AND live caption both on screen from frame 0.
+    b. **Captions "normal"** — make them glowing (soft outer glow in the accent colour), bigger, more energy.
+    c. **No colour grading** — every shot must be graded (contrast, colour, look); amount = his Drive reference
+       1nw7brKSEU_VvGOK5PHg12baeKkVFLPIY (could not download on 26 Nov: sharing not public).
+    d. **No face tracking** — static crops leave the face drifting/side-on. Use real face tracking (he is adding a
+       face-tracking + colour-grading tool to our toolset; use it when it arrives).
+    e. **0:12 card IN = weak** (0.13 s cross-fade + soft -9 dB generated whoosh) and **0:13 card→card change = weak**
+       (frame 13.0 shows a messy double-exposure blend). Needed: a real animated transition (slide/zoom/whip/mask) with a
+       punchy SFX that hits ON the cut. Never cross-blend two cards.
+
 ## METRICS (Content Rewards views, read 2026-11-26 01:20 IST; all 19 submissions "Pending", 0 approved, 0 rejected)
 Baseline pre-v3 (13 Boxabl reels, 21-24 Nov, all now 28-95h old): median **131**, avg 117, range 46-160. Account: 1 follower, empty bio.
 Current rules (v3 hook layout + hook gate, 25 Nov): **n=4, all < 17h old** → median **152** (140-203). No verdict until 8 reels ≥ 48h.
@@ -254,3 +269,12 @@ Every reel still stalls at ~50-200 = Instagram's first test batch; nothing broke
   premium.py `hook_y` / `end_y` in scenes.json, handle follows end_y (rule 13e).
 - Test this batch: 3 new sources (founder interview, Enes factory tour, FaZe speedway) + first reels whose frame 0 is
   the product/action instead of a celebrity face (house_in_a_box, factory_disney). Compare at 48h vs celeb-face reels.
+
+### 2026-11-26 — owner review of elon_joke_call → PAUSE premium (rule 14)
+- **M30 High — premium v1 shipped without a real opening, grade, tracking, or transitions.** Owner watched the live reel:
+  heavy static start, plain captions, ungraded footage, no face tracking, weak card IN at 0:12 and weak card→card at 0:13
+  (Observed in frames: 4-frame blend; 13.0 = double exposure). Root cause (Hypothesis, high): I copied the LOOK of the
+  references (fonts, paper cards) but not their MOTION + SOUND design, and my self-score did not check motion/SFX at all.
+  → **FIX:** reel-making disabled + premium reels held until rule 14 a-e are built and tested; the /100 self-score must now
+  include an explicit check of frame 0 motion, every transition (look at 3 frames before/after each cut) and the SFX on
+  each cut. A repeat of a weak transition after resuming = stop the batch.
