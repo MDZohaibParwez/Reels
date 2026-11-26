@@ -427,11 +427,12 @@
    "caption": "FaZe Rug wants to gift one fan a whole BOXABL home 🏠\nHe'd even unpack it live for the winner.\nFree BOXABL or $50K cash — which one are you taking?\n@boxabl @fazerug\n#boxabl #tinyhome #prefabhome #fazerug",
    "hook": "FaZe Rug wants to [gift] this house",
    "score": 70,
-   "slot": "next free slot after approval",
-   "approved": false,
+   "slot": "2026-11-26 21:00 IST",
+   "approved": true,
    "posted": false,
    "submitted": false,
-   "edit": "premium.py v1 (Jensen/Mark Sut premium style: serif special words, paper cards, wide pip of the Casita unfolding)"
+   "edit": "premium.py v1 (Jensen/Mark Sut premium style: serif special words, paper cards, wide pip of the Casita unfolding)",
+   "approved_note": "owner approved 2026-11-26 18:55 IST in chat, knowing premium is paused (exception for this one reel)"
   },
   {
    "id": "2026-11-26_boxabl_house_in_a_box",
