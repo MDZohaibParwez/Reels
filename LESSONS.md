@@ -93,9 +93,10 @@ every repeat of a mistake must get a STRONGER fix than the last one (code/check 
     733-1005). FaZe tour `elonvisit.mp4` is now used up to 852 except 560-640 (house-a-minute talk = repeat topic).
     Scan a new long video with whisper `base` on a numpy array (av 19 breaks faster-whisper's file decoding).
 
-14. **PREMIUM STYLE IS PAUSED (owner, 2026-11-26: "training achhi nahi hai, roko").** Reel-making task is disabled and
-    the unposted premium reels are on hold (approved=false, "hold" note). Do NOT make or post premium reels until Zohaib
-    gives the go AND every item below is done. His feedback on elon_joke_call (posted 26 Nov 18:00):
+14. **Owner feedback 2026-11-26 = UPGRADE TODO, NOT a stop.** He first said "roko", then (19:27 IST) clarified: keep the
+    machine running exactly as it is — post the already-made reels on schedule, keep making reels in the current premium
+    style, do NOT change the renderer until he reviews with us ("kal dekhna"). The list below is what we build next, after
+    his go-ahead. His feedback on elon_joke_call (posted 26 Nov 18:00):
     a. **Start too heavy/static** — 0-3 s was a still side-profile + plain top text + tiny first caption. Needed: an
        intro animation on frame 0 (text/visual flies in), a WHOOSH on the first frame, an energetic music bed from 0 s,
        then a suspense sound before the reveal. Hook text AND live caption both on screen from frame 0.
@@ -275,6 +276,6 @@ Every reel still stalls at ~50-200 = Instagram's first test batch; nothing broke
   heavy static start, plain captions, ungraded footage, no face tracking, weak card IN at 0:12 and weak card→card at 0:13
   (Observed in frames: 4-frame blend; 13.0 = double exposure). Root cause (Hypothesis, high): I copied the LOOK of the
   references (fonts, paper cards) but not their MOTION + SOUND design, and my self-score did not check motion/SFX at all.
-  → **FIX:** reel-making disabled + premium reels held until rule 14 a-e are built and tested; the /100 self-score must now
+  → **FIX:** rule 14 a-e = the next upgrade, built after his review (machine keeps running unchanged until then); the /100 self-score must now
   include an explicit check of frame 0 motion, every transition (look at 3 frames before/after each cut) and the SFX on
   each cut. A repeat of a weak transition after resuming = stop the batch.

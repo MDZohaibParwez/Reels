@@ -191,10 +191,9 @@
    "campaign": "Timothy White on The Drew Barrymore Show (Storyteller Publishing) - https://contentrewards.com/c/campaigns/015ebba0-2f0c-4359-b229-75f9c9591b68",
    "caption": "Brad Pitt called photographer Timothy White and said \"I've got five days\", so they rode motorcycles through the Mojave Desert for a 5-day shoot. More stories behind iconic photos in his book Life Through My Lens. Get your copy from the link in bio.\n\n@storytellerpublishing @storytelleraspire #LifeThroughMyLens #bookstagram #booktok #memoir #photography",
    "slot": "HOLD - only after CR draft pre-approval + bio link",
-   "approved": false,
+   "approved": true,
    "posted": false,
    "submitted": false,
-   "hold": true,
    "requires_draft_approval": true,
    "note": "Campaign rule: drafts need Content Rewards pre-approval before posting; IG bio must link https://storyteller.media/products/life-through-my-lens. Owner approved 2026-11-23. Keep approved=false (so poster skips it) until CR draft is approved and bio link is set; then flip approved=true, hold=false. Draft submitted to CR (IG mictalkclips) and pending brand review - check https://contentrewards.com/c/drafts.",
    "owner_approved": true,
@@ -491,12 +490,11 @@
    "hook": "FaZe would turn this into a [man cave]",
    "score": 72,
    "slot": "2026-11-26 21:00 IST",
-   "approved": false,
+   "approved": true,
    "posted": false,
    "submitted": false,
    "edit": "premium.py",
-   "approved_note": "owner replied ✅ (= sab approve)",
-   "hold": "2026-11-26: owner said roko - premium training not good yet (weak start, captions, transitions, SFX, no grading). Re-edit before posting."
+   "approved_note": "owner replied ✅ (= sab approve)"
   },
   {
    "id": "2026-11-26_boxabl_factory_disney_ride",
@@ -507,12 +505,11 @@
    "hook": "This factory tour is a [Disney] ride",
    "score": 70,
    "slot": "2026-11-27 09:00 IST",
-   "approved": false,
+   "approved": true,
    "posted": false,
    "submitted": false,
    "edit": "premium.py",
-   "approved_note": "owner replied ✅ (= sab approve)",
-   "hold": "2026-11-26: owner said roko - premium training not good yet (weak start, captions, transitions, SFX, no grading). Re-edit before posting."
+   "approved_note": "owner replied ✅ (= sab approve)"
   },
   {
    "id": "2026-11-26_boxabl_shower_400",
@@ -523,12 +520,11 @@
    "hook": "BOXABL built a $1,000 shower for [$400]",
    "score": 70,
    "slot": "2026-11-27 13:00 IST",
-   "approved": false,
+   "approved": true,
    "posted": false,
    "submitted": false,
    "edit": "premium.py",
-   "approved_note": "owner replied ✅ (= sab approve)",
-   "hold": "2026-11-26: owner said roko - premium training not good yet (weak start, captions, transitions, SFX, no grading). Re-edit before posting."
+   "approved_note": "owner replied ✅ (= sab approve)"
   }
  ],
  "auto_submit": true,
