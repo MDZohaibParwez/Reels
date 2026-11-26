@@ -433,10 +433,11 @@
    "hook": "A whole house is folded [inside] this",
    "score": 74,
    "slot": "2026-11-26 13:00 IST",
-   "approved": false,
+   "approved": true,
    "posted": false,
    "submitted": false,
-   "edit": "premium.py"
+   "edit": "premium.py",
+   "approved_note": "owner replied ✅ (= sab approve)"
   },
   {
    "id": "2026-11-26_boxabl_elon_joke_call",
@@ -447,10 +448,11 @@
    "hook": "They thought Elon's call was a [joke]",
    "score": 70,
    "slot": "2026-11-26 18:00 IST",
-   "approved": false,
+   "approved": true,
    "posted": false,
    "submitted": false,
-   "edit": "premium.py"
+   "edit": "premium.py",
+   "approved_note": "owner replied ✅ (= sab approve)"
   },
   {
    "id": "2026-11-26_boxabl_faze_man_cave",
@@ -461,10 +463,11 @@
    "hook": "FaZe would turn this into a [man cave]",
    "score": 72,
    "slot": "2026-11-26 21:00 IST",
-   "approved": false,
+   "approved": true,
    "posted": false,
    "submitted": false,
-   "edit": "premium.py"
+   "edit": "premium.py",
+   "approved_note": "owner replied ✅ (= sab approve)"
   },
   {
    "id": "2026-11-26_boxabl_factory_disney_ride",
@@ -475,10 +478,11 @@
    "hook": "This factory tour is a [Disney] ride",
    "score": 70,
    "slot": "2026-11-27 09:00 IST",
-   "approved": false,
+   "approved": true,
    "posted": false,
    "submitted": false,
-   "edit": "premium.py"
+   "edit": "premium.py",
+   "approved_note": "owner replied ✅ (= sab approve)"
   },
   {
    "id": "2026-11-26_boxabl_shower_400",
@@ -489,10 +493,11 @@
    "hook": "BOXABL built a $1,000 shower for [$400]",
    "score": 70,
    "slot": "2026-11-27 13:00 IST",
-   "approved": false,
+   "approved": true,
    "posted": false,
    "submitted": false,
-   "edit": "premium.py"
+   "edit": "premium.py",
+   "approved_note": "owner replied ✅ (= sab approve)"
   }
  ],
  "auto_submit": true,
