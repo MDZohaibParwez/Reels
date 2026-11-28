@@ -525,10 +525,12 @@
       "score": 70,
       "slot": "2026-11-27 09:00 IST",
       "approved": true,
-      "posted": false,
+      "posted": true,
       "submitted": false,
       "edit": "premium.py",
-      "approved_note": "owner replied ✅ (= sab approve)"
+      "approved_note": "owner replied ✅ (= sab approve)",
+      "post_url": "https://www.instagram.com/reel/DgSP22WBt0i/",
+      "posted_at": "2026-11-28T12:25:11Z"
     },
     {
       "id": "2026-11-26_boxabl_shower_400",
